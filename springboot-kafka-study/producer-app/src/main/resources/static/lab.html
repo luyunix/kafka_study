@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kafka 消息流实验台</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f4f7fb;
+            --panel: #ffffff;
+            --line: #dbe4ef;
+            --text: #172235;
+            --muted: #66758a;
+            --blue: #2563eb;
+            --blue-soft: #edf4ff;
+            --green: #07845c;
+            --orange: #b85e08;
+            --red: #c93645;
+            --shadow: 0 10px 30px rgba(35, 55, 80, .08);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 8% 0%, #e4efff 0, transparent 30%),
+                radial-gradient(circle at 92% 8%, #edf9f4 0, transparent 25%),
+                var(--bg);
+            color: var(--text);
+            font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 28px 34px 20px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, .76);
+            backdrop-filter: blur(14px);
+        }
+        h1 { margin: 0; font-size: 26px; letter-spacing: .01em; color: #12213a; }
+        header p { margin: 5px 0 0; color: var(--muted); }
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+            color: var(--blue);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .status { display: flex; gap: 14px; }
+        .metric {
+            min-width: 116px;
+            padding: 9px 14px;
+            background: rgba(255, 255, 255, .92);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(35, 55, 80, .05);
+        }
+        .metric span { display: block; color: var(--muted); font-size: 12px; }
+        .metric strong { font-size: 21px; color: #184a9c; }
+        main { padding: 22px 34px 34px; }
+        .composer {
+            display: grid;
+            grid-template-columns: 150px 150px 1fr 120px auto;
+            gap: 10px;
+            align-items: end;
+            padding: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+        label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; }
+        input, select, button {
+            height: 40px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            color: var(--text);
+            background: #fff;
+            padding: 0 11px;
+            outline: none;
+            transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+        }
+        input:focus, select:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+        }
+        button {
+            cursor: pointer;
+            border-color: var(--blue);
+            background: var(--blue);
+            color: #fff;
+            font-weight: 700;
+        }
+        button:hover { filter: brightness(1.04); transform: translateY(-1px); }
+        .secondary {
+            border-color: #cbdaf5;
+            background: var(--blue-soft);
+            color: #1d4f9c;
+        }
+        .danger {
+            border-color: #f0c8ce;
+            background: #fff1f3;
+            color: #a82d3a;
+        }
+        .batchbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0 22px;
+        }
+        .batchbar input { width: 90px; }
+        .hint { margin-left: auto; color: var(--muted); }
+        .flash { min-width: 240px; color: var(--green); }
+        .flow {
+            display: grid;
+            grid-template-columns: 1fr 70px 1fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+        .arrow {
+            display: grid;
+            place-items: center;
+            color: var(--blue);
+            font-size: 32px;
+        }
+        section {
+            min-height: 500px;
+            overflow: hidden;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 17px;
+            border-bottom: 1px solid var(--line);
+        }
+        h2 { margin: 0; font-size: 16px; }
+        .badge {
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: var(--blue-soft);
+            color: #1d55b3;
+            font-size: 12px;
+        }
+        .table-wrap { max-height: 590px; overflow: auto; }
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        th, td {
+            padding: 11px 10px;
+            border-bottom: 1px solid #e8eef5;
+            text-align: left;
+            vertical-align: top;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: #f7f9fc;
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        td code { color: #52647a; }
+        .partition {
+            display: inline-grid;
+            min-width: 28px;
+            height: 24px;
+            place-items: center;
+            border-radius: 6px;
+            background: #fff3df;
+            color: var(--orange);
+            font-weight: 800;
+        }
+        .consumer {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid currentColor;
+            font-size: 12px;
+        }
+        .empty { padding: 55px 20px; color: var(--muted); text-align: center; }
+        .error { color: var(--red); }
+        @media (max-width: 1200px) {
+            .composer { grid-template-columns: 1fr 1fr; }
+            .composer .wide { grid-column: span 2; }
+        }
+        @media (max-width: 900px) {
+            header { align-items: flex-start; gap: 20px; }
+            .status { flex-wrap: wrap; justify-content: flex-end; }
+            .metric { min-width: 100px; }
+            .flow { grid-template-columns: 1fr; }
+            .arrow { transform: rotate(90deg); height: 42px; }
+        }
+        @media (max-width: 680px) {
+            header { display: grid; padding: 22px 18px 18px; }
+            .status { justify-content: stretch; }
+            .metric { flex: 1; }
+            main { padding: 16px 14px 24px; }
+            .composer { grid-template-columns: 1fr; }
+            .composer .wide { grid-column: auto; }
+            .batchbar { align-items: stretch; flex-wrap: wrap; }
+            .hint { width: 100%; margin-left: 0; }
+            .flash { min-width: 0; flex: 1; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div>
+        <a class="home-link" href="/">← 返回学习工作台</a>
+        <h1>Kafka 消息流实验台</h1>
+        <p>手动发送消息，实时观察 Producer → Partition → Consumer Instance</p>
+    </div>
+    <div class="status">
+        <div class="metric"><span>已生产</span><strong id="sentCount">0</strong></div>
+        <div class="metric"><span>已消费回执</span><strong id="consumedCount">0</strong></div>
+        <div class="metric"><span>活跃消费者</span><strong id="consumerCount">0</strong></div>
+    </div>
+</header>
+
+<main>
+    <form class="composer" id="sendForm">
+        <label>消息 Key
+            <input id="key" placeholder="可留空自动生成">
+        </label>
+        <label>消息类型
+            <input id="type" value="lesson">
+        </label>
+        <label class="wide">消息内容
+            <input id="payload" value="手动发送一条 Kafka 学习消息" required>
+        </label>
+        <label>指定分区
+            <select id="partition">
+                <option value="">自动</option>
+                <option value="0">Partition 0</option>
+                <option value="1">Partition 1</option>
+                <option value="2">Partition 2</option>
+            </select>
+        </label>
+        <button type="submit">发送消息</button>
+    </form>
+
+    <div class="batchbar">
+        <input id="batchCount" type="number" min="1" max="100" value="12">
+        <button class="secondary" id="batchButton">批量发送</button>
+        <button class="danger" id="clearButton">清空页面记录</button>
+        <span class="flash" id="flash"></span>
+        <span class="hint">页面每秒从消费回执 Topic 同步一次</span>
+    </div>
+
+    <div class="flow">
+        <section>
+            <div class="section-head">
+                <h2>① Producer 已写入 Broker</h2>
+                <span class="badge">SendResult</span>
+            </div>
+            <div class="table-wrap" id="sentTable"></div>
+        </section>
+        <div class="arrow">→</div>
+        <section>
+            <div class="section-head">
+                <h2>② Consumer 已处理</h2>
+                <span class="badge">消费回执</span>
+            </div>
+            <div class="table-wrap" id="consumedTable"></div>
+        </section>
+    </div>
+</main>
+
+<script>
+    const byId = id => document.getElementById(id);
+    const escapeHtml = value => String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    const time = value => value ? new Date(value).toLocaleTimeString("zh-CN", {hour12: false}) : "—";
+    const shortId = value => value ? value.slice(0, 8) : "—";
+    const consumerColor = name => {
+        let hash = 0;
+        for (const char of name) hash = ((hash << 5) - hash) + char.charCodeAt(0);
+        return `hsl(${Math.abs(hash) % 360} 58% 38%)`;
+    };
+
+    function sentTable(items) {
+        if (!items.length) return '<div class="empty">等待手动发送消息</div>';
+        return `<table><thead><tr>
+            <th style="width:76px">时间</th><th>内容 / Event ID</th>
+            <th style="width:64px">分区</th><th style="width:68px">Offset</th>
+        </tr></thead><tbody>${items.map(item => `<tr>
+            <td>${time(item.sentAt)}</td>
+            <td title="${escapeHtml(item.payload)}"><strong>${escapeHtml(item.payload)}</strong><br>
+                <code>${shortId(item.eventId)} · key=${escapeHtml(item.key)}</code></td>
+            <td><span class="partition">P${item.partition}</span></td>
+            <td>${item.offset}</td>
+        </tr>`).join("")}</tbody></table>`;
+    }
+
+    function consumedTable(items) {
+        if (!items.length) return '<div class="empty">消费者启动后，处理结果会显示在这里</div>';
+        return `<table><thead><tr>
+            <th style="width:76px">时间</th><th>消费者 / Event ID</th>
+            <th style="width:64px">分区</th><th style="width:68px">Offset</th>
+        </tr></thead><tbody>${items.map(item => `<tr>
+            <td>${time(item.consumedAt)}</td>
+            <td><span class="consumer" style="color:${consumerColor(item.consumerInstance)}">
+                ${escapeHtml(item.consumerInstance)}</span><br>
+                <code>${shortId(item.eventId)} · ${escapeHtml(item.consumerGroup)}</code></td>
+            <td><span class="partition">P${item.partition}</span></td>
+            <td>${item.offset}</td>
+        </tr>`).join("")}</tbody></table>`;
+    }
+
+    async function refresh() {
+        try {
+            const response = await fetch("/api/traces");
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            byId("sentCount").textContent = data.sent.length;
+            byId("consumedCount").textContent = data.consumed.length;
+            byId("consumerCount").textContent =
+                new Set(data.consumed.map(item => item.consumerInstance)).size;
+            byId("sentTable").innerHTML = sentTable(data.sent);
+            byId("consumedTable").innerHTML = consumedTable(data.consumed);
+        } catch (error) {
+            byId("flash").innerHTML = `<span class="error">刷新失败：${escapeHtml(error.message)}</span>`;
+        }
+    }
+
+    function show(message, error = false) {
+        byId("flash").className = error ? "flash error" : "flash";
+        byId("flash").textContent = message;
+        window.setTimeout(() => byId("flash").textContent = "", 3500);
+    }
+
+    byId("sendForm").addEventListener("submit", async event => {
+        event.preventDefault();
+        const partitionValue = byId("partition").value;
+        const body = {
+            key: byId("key").value,
+            type: byId("type").value,
+            payload: byId("payload").value,
+            partition: partitionValue === "" ? null : Number(partitionValue)
+        };
+        try {
+            const response = await fetch("/api/events", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            });
+            if (!response.ok) throw new Error(await response.text());
+            const receipt = await response.json();
+            show(`发送成功：P${receipt.partition} / offset ${receipt.offset}`);
+            await refresh();
+        } catch (error) {
+            show(`发送失败：${error.message}`, true);
+        }
+    });
+
+    byId("batchButton").addEventListener("click", async () => {
+        const count = Number(byId("batchCount").value);
+        try {
+            const response = await fetch(`/api/events/batch?count=${count}`, {method: "POST"});
+            if (!response.ok) throw new Error(await response.text());
+            const receipts = await response.json();
+            show(`批量发送成功：${receipts.length} 条`);
+            await refresh();
+        } catch (error) {
+            show(`批量发送失败：${error.message}`, true);
+        }
+    });
+
+    byId("clearButton").addEventListener("click", async () => {
+        await fetch("/api/traces", {method: "DELETE"});
+        show("页面记录已清空");
+        await refresh();
+    });
+
+    refresh();
+    window.setInterval(refresh, 1000);
+</script>
+</body>
+</html>

@@ -34,12 +34,20 @@ springboot-kafka-study
 5. 第二个设置环境变量
    `INSTANCE_ID=consumer-2;CONSUMER_GROUP=study-multi-group`。
 6. 在 Run Configuration 中勾选 `Allow multiple instances`，再分别启动。
-7. 打开 `http://localhost:18080`，手动发送消息并观察两个消费者。
+7. 打开 `http://localhost:18080` 进入学习工作台；从“Kafka 实验台”进入消息收发页面。
 
 Topic 默认有 3 个分区。两个消费者使用相同组名时，三个分区会在两个实例之间分配；
 每条消息只由组内一个实例处理。消费者工程不启动 Web Server，所以多开不会发生端口冲突。
 
-页面中的左栏来自生产者 `SendResult`，右栏来自消费者处理后写入
+学习工作台会直接读取仓库中的 10 章 156 节 Markdown 笔记，支持课程搜索、逐节阅读、
+原视频跳转和本机学习进度记录。页面地址：
+
+```text
+学习工作台：http://localhost:18080/
+消息流实验：http://localhost:18080/lab.html
+```
+
+消息流实验中的左栏来自生产者 `SendResult`，右栏来自消费者处理后写入
 `study.multi.events.receipts` 的回执。两边使用相同 Event ID，可以逐条核对消息从生产到
 消费的完整路径。默认使用 18080，是为了避开本机已被其他容器占用的 8080。
 
