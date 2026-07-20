@@ -1,0 +1,11 @@
+.DS_Store
+.idea/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 课程原始音视频只用于本地核查，不提交到仓库。
+sources/media/
+sources/work/
+springboot-kafka-study/**/target/

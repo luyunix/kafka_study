@@ -1,0 +1,11 @@
+[project]
+name = "kafka-study"
+version = "0.1.0"
+description = "Complete Kafka 3.7.0 course notes and dependency-free learning simulations"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools]
+packages = ["kafka_from_scratch"]
+

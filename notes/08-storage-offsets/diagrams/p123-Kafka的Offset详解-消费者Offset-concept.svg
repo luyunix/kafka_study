@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="460" viewBox="0 0 1280 460">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker></defs>
+<rect width="1280" height="460" fill="#f8fafc" rx="28"/>
+<text x="55" y="54" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="30" font-weight="700" fill="#0f172a">P123 · Kafka的Offset详解-消费者Offset</text>
+<text x="55" y="126" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="17" fill="#475569">按本节讲解顺序整理的学习路径</text>
+<rect x="55" y="160" width="188" height="150" rx="22" fill="white" stroke="#0f766e" stroke-width="4"/>
+<circle cx="83" cy="188" r="17" fill="#0f766e"/>
+<text x="83" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="white">1</text>
+<text x="149.0" y="238" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="650" fill="#0f172a">构造消息</text>
+<path d="M253 235 H283" stroke="#94a3b8" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="293" y="160" width="188" height="150" rx="22" fill="white" stroke="#0369a1" stroke-width="4"/>
+<circle cx="321" cy="188" r="17" fill="#0369a1"/>
+<text x="321" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="white">2</text>
+<text x="387.0" y="238" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="650" fill="#0f172a">选择 Topic/Part</text>
+<text x="387.0" y="266" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="650" fill="#0f172a">ition</text>
+<path d="M491 235 H521" stroke="#94a3b8" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="531" y="160" width="188" height="150" rx="22" fill="white" stroke="#4f46e5" stroke-width="4"/>
+<circle cx="559" cy="188" r="17" fill="#4f46e5"/>
+<text x="559" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="white">3</text>
+<text x="625.0" y="238" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="650" fill="#0f172a">写入 Broker</text>
+<path d="M729 235 H759" stroke="#94a3b8" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="769" y="160" width="188" height="150" rx="22" fill="white" stroke="#7c3aed" stroke-width="4"/>
+<circle cx="797" cy="188" r="17" fill="#7c3aed"/>
+<text x="797" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="white">4</text>
+<text x="863.0" y="238" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="650" fill="#0f172a">记录 Offset</text>
+<path d="M967 235 H997" stroke="#94a3b8" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="1007" y="160" width="188" height="150" rx="22" fill="white" stroke="#be185d" stroke-width="4"/>
+<circle cx="1035" cy="188" r="17" fill="#be185d"/>
+<text x="1035" y="194" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="white">5</text>
+<text x="1101.0" y="238" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="650" fill="#0f172a">消费者处理</text>
+<text x="55" y="410" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#64748b">概念图为学习笔记原创重绘；原视频画面仅用于内容核对。</text>
+</svg>

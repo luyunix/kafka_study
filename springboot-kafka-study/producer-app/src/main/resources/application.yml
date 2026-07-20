@@ -1,0 +1,40 @@
+server:
+  port: ${SERVER_PORT:18080}
+
+spring:
+  application:
+    name: kafka-producer-app
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      properties:
+        enable.idempotence: true
+        spring.json.add.type.headers: false
+        partitioner.class: com.example.kafkaproducer.course.KeyHashPartitioner
+        interceptor.classes: com.example.kafkaproducer.course.StudyProducerInterceptor
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      properties:
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.example.kafkaproducer.model.ConsumptionReceipt
+        spring.json.trusted.packages: com.example.kafkaproducer.model
+    listener:
+      ack-mode: record
+      missing-topics-fatal: false
+
+app:
+  kafka:
+    topic: ${KAFKA_TOPIC:study.multi.events}
+    partitions: ${KAFKA_PARTITIONS:3}
+    receipt-topic: ${KAFKA_RECEIPT_TOPIC:study.multi.events.receipts}
+    receipt-group: ${KAFKA_RECEIPT_GROUP:study-producer-dashboard}
+
+logging:
+  level:
+    com.example.kafkaproducer: INFO

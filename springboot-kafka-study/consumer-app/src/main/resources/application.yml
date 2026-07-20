@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: kafka-consumer-app
+  main:
+    web-application-type: none
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    client-id: ${INSTANCE_ID:kafka-study-consumer}
+    consumer:
+      group-id: ${CONSUMER_GROUP:study-multi-consumer-group}
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: com.example.kafkaconsumer.model.StudyEvent
+        spring.json.trusted.packages: com.example.kafkaconsumer.model
+        interceptor.classes: com.example.kafkaconsumer.course.StudyConsumerInterceptor
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      properties:
+        spring.json.add.type.headers: false
+    listener:
+      ack-mode: record
+      missing-topics-fatal: false
+
+app:
+  instance-id: ${INSTANCE_ID:consumer-local}
+  kafka:
+    topic: ${KAFKA_TOPIC:study.multi.events}
+    receipt-topic: ${KAFKA_RECEIPT_TOPIC:study.multi.events.receipts}
+    concurrency: ${CONSUMER_CONCURRENCY:1}
+
+logging:
+  level:
+    com.example.kafkaconsumer: INFO

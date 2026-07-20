@@ -1,0 +1,1094 @@
+[
+  {
+    "cid": "1473696947",
+    "duration": "01:54",
+    "number": 1,
+    "p": 1,
+    "title": "课程概述"
+  },
+  {
+    "cid": "1473697064",
+    "duration": "03:03",
+    "number": 2,
+    "p": 2,
+    "title": "What is Kafka？"
+  },
+  {
+    "cid": "1473697105",
+    "duration": "03:50",
+    "number": 3,
+    "p": 3,
+    "title": "谁在使用Kafka"
+  },
+  {
+    "cid": "1473697118",
+    "duration": "04:42",
+    "number": 4,
+    "p": 4,
+    "title": "Kafka的起源"
+  },
+  {
+    "cid": "1473697328",
+    "duration": "01:51",
+    "number": 5,
+    "p": 5,
+    "title": "Kafka名字的由来"
+  },
+  {
+    "cid": "1473705072",
+    "duration": "03:08",
+    "number": 6,
+    "p": 6,
+    "title": "Kafka的发展历程"
+  },
+  {
+    "cid": "1473705333",
+    "duration": "03:12",
+    "number": 7,
+    "p": 7,
+    "title": "Kafka版本迭代演进"
+  },
+  {
+    "cid": "1473706109",
+    "duration": "05:12",
+    "number": 8,
+    "p": 8,
+    "title": "Kafka运行环境前置要求"
+  },
+  {
+    "cid": "1473707012",
+    "duration": "03:24",
+    "number": 9,
+    "p": 9,
+    "title": "JDK17的下载"
+  },
+  {
+    "cid": "1473707641",
+    "duration": "04:37",
+    "number": 10,
+    "p": 10,
+    "title": "JDK17的安装与配置"
+  },
+  {
+    "cid": "1473712116",
+    "duration": "03:58",
+    "number": 11,
+    "p": 11,
+    "title": "Kafka的下载和安装"
+  },
+  {
+    "cid": "1473712294",
+    "duration": "03:38",
+    "number": 12,
+    "p": 12,
+    "title": "Kafka环境启动的两种方式"
+  },
+  {
+    "cid": "1473712947",
+    "duration": "02:43",
+    "number": 13,
+    "p": 13,
+    "title": "Kafka安装目录的介绍"
+  },
+  {
+    "cid": "1473713528",
+    "duration": "04:55",
+    "number": 14,
+    "p": 14,
+    "title": "Zookeeper服务器的启动"
+  },
+  {
+    "cid": "1473714037",
+    "duration": "04:48",
+    "number": 15,
+    "p": 15,
+    "title": "Kafka服务器的启动"
+  },
+  {
+    "cid": "1473714537",
+    "duration": "02:50",
+    "number": 16,
+    "p": 16,
+    "title": "Zookeeper和Kafka服务器的关闭"
+  },
+  {
+    "cid": "1473714868",
+    "duration": "03:56",
+    "number": 17,
+    "p": 17,
+    "title": "Zookeeper服务器的下载"
+  },
+  {
+    "cid": "1473715480",
+    "duration": "03:48",
+    "number": 18,
+    "p": 18,
+    "title": "Zookeeper服务器的安装"
+  },
+  {
+    "cid": "1473728864",
+    "duration": "02:50",
+    "number": 19,
+    "p": 19,
+    "title": "Zookeeper服务器的配置"
+  },
+  {
+    "cid": "1473730025",
+    "duration": "03:44",
+    "number": 20,
+    "p": 20,
+    "title": "Zookeeper服务器的启动"
+  },
+  {
+    "cid": "1473730427",
+    "duration": "06:53",
+    "number": 21,
+    "p": 21,
+    "title": "Zookeeper服务器与Tomcat端口冲突处理"
+  },
+  {
+    "cid": "1473734932",
+    "duration": "04:47",
+    "number": 22,
+    "p": 22,
+    "title": "使用独立的Zookeeper启动Kafka"
+  },
+  {
+    "cid": "1473739038",
+    "duration": "05:20",
+    "number": 23,
+    "p": 23,
+    "title": "Kafka启动使用KRaft生成Cluster UUID"
+  },
+  {
+    "cid": "1473739308",
+    "duration": "05:54",
+    "number": 24,
+    "p": 24,
+    "title": "kafka-storage.sh脚本参数解读"
+  },
+  {
+    "cid": "1473744990",
+    "duration": "08:31",
+    "number": 25,
+    "p": 25,
+    "title": "Kafka启动使用KRaft"
+  },
+  {
+    "cid": "1473749821",
+    "duration": "08:04",
+    "number": 26,
+    "p": 26,
+    "title": "自定义Cluster UUID启动Kafka"
+  },
+  {
+    "cid": "1473750679",
+    "duration": "04:50",
+    "number": 27,
+    "p": 27,
+    "title": "Docker的卸载和安装"
+  },
+  {
+    "cid": "1473750904",
+    "duration": "06:44",
+    "number": 28,
+    "p": 28,
+    "title": "Docker的卸载和安装"
+  },
+  {
+    "cid": "1473750763",
+    "duration": "07:06",
+    "number": 29,
+    "p": 29,
+    "title": "Docker引擎启动与关闭"
+  },
+  {
+    "cid": "1473750886",
+    "duration": "05:16",
+    "number": 30,
+    "p": 30,
+    "title": "拉取Kafka的Docker镜像"
+  },
+  {
+    "cid": "1473751027",
+    "duration": "03:48",
+    "number": 31,
+    "p": 31,
+    "title": "启动Kafka的Docker容器"
+  },
+  {
+    "cid": "1473751207",
+    "duration": "02:42",
+    "number": 32,
+    "p": 32,
+    "title": "Kafka的主题Topic和事件Event"
+  },
+  {
+    "cid": "1473751225",
+    "duration": "06:53",
+    "number": 33,
+    "p": 33,
+    "title": "通过脚本工具创建主题Topic"
+  },
+  {
+    "cid": "1473751331",
+    "duration": "06:42",
+    "number": 34,
+    "p": 34,
+    "title": "kafka-topics.sh脚本工具的使用"
+  },
+  {
+    "cid": "1473751298",
+    "duration": "09:05",
+    "number": 35,
+    "p": 35,
+    "title": "在主题Topic中写入一些事件Events"
+  },
+  {
+    "cid": "1473751389",
+    "duration": "05:21",
+    "number": 36,
+    "p": 36,
+    "title": "从主题Topic中读取事件Events"
+  },
+  {
+    "cid": "1473751559",
+    "duration": "05:44",
+    "number": 37,
+    "p": 37,
+    "title": "从主题Topic中读取事件Events"
+  },
+  {
+    "cid": "1473751723",
+    "duration": "06:15",
+    "number": 38,
+    "p": 38,
+    "title": "外部环境连接Kafka"
+  },
+  {
+    "cid": "1473751679",
+    "duration": "07:18",
+    "number": 39,
+    "p": 39,
+    "title": "外部环境连不上Kafka？"
+  },
+  {
+    "cid": "1473751938",
+    "duration": "05:01",
+    "number": 40,
+    "p": 40,
+    "title": "Docker容器Kafka配置文件"
+  },
+  {
+    "cid": "1473751860",
+    "duration": "05:07",
+    "number": 41,
+    "p": 41,
+    "title": "Docker容器Kafka配置文件复制到Linux"
+  },
+  {
+    "cid": "1473752007",
+    "duration": "06:43",
+    "number": 42,
+    "p": 42,
+    "title": "Docker容器Kafka配置文件修改"
+  },
+  {
+    "cid": "1473751994",
+    "duration": "03:51",
+    "number": 43,
+    "p": 43,
+    "title": "Docker容器Kafka配置文件映射"
+  },
+  {
+    "cid": "1473752046",
+    "duration": "04:02",
+    "number": 44,
+    "p": 44,
+    "title": "Idea之Kafka插件工具"
+  },
+  {
+    "cid": "1473752175",
+    "duration": "06:50",
+    "number": 45,
+    "p": 45,
+    "title": "Kafka连接工具Offset Explorer"
+  },
+  {
+    "cid": "1473752081",
+    "duration": "06:43",
+    "number": 46,
+    "p": 46,
+    "title": "Kafka连接工具CMAK"
+  },
+  {
+    "cid": "1473752450",
+    "duration": "08:30",
+    "number": 47,
+    "p": 47,
+    "title": "Kafka连接工具CMAK配置与启动"
+  },
+  {
+    "cid": "1473752539",
+    "duration": "08:16",
+    "number": 48,
+    "p": 48,
+    "title": "Kafka连接工具CMAK使用限制"
+  },
+  {
+    "cid": "1473752708",
+    "duration": "08:57",
+    "number": 49,
+    "p": 49,
+    "title": "Kafka监控工具EFAK"
+  },
+  {
+    "cid": "1473752771",
+    "duration": "10:26",
+    "number": 50,
+    "p": 50,
+    "title": "Kafka监控工具EFAK配置"
+  },
+  {
+    "cid": "1473752879",
+    "duration": "09:57",
+    "number": 51,
+    "p": 51,
+    "title": "Kafka监控工具EFAK部署运行"
+  },
+  {
+    "cid": "1473753044",
+    "duration": "06:50",
+    "number": 52,
+    "p": 52,
+    "title": "Spring Boot集成Kafka开发"
+  },
+  {
+    "cid": "1473753201",
+    "duration": "08:48",
+    "number": 53,
+    "p": 53,
+    "title": "Spring Boot集成Kafka开发配置"
+  },
+  {
+    "cid": "1473753222",
+    "duration": "05:28",
+    "number": 54,
+    "p": 54,
+    "title": "Spring Boot集成Kafka事件Event发送"
+  },
+  {
+    "cid": "1473753169",
+    "duration": "09:15",
+    "number": 55,
+    "p": 55,
+    "title": "Spring Boot集成Kafka事件Event发送测试"
+  },
+  {
+    "cid": "1473753413",
+    "duration": "08:36",
+    "number": 56,
+    "p": 56,
+    "title": "Spring Boot集成Kafka事件Event读取"
+  },
+  {
+    "cid": "1473753327",
+    "duration": "06:40",
+    "number": 57,
+    "p": 57,
+    "title": "Kafka的几个概念快速梳理"
+  },
+  {
+    "cid": "1473753388",
+    "duration": "04:16",
+    "number": 58,
+    "p": 58,
+    "title": "SpringBoot集成Kafka读取最早的消息"
+  },
+  {
+    "cid": "1473753615",
+    "duration": "06:00",
+    "number": 59,
+    "p": 59,
+    "title": "SpringBoot集成Kafka读取最早的消息"
+  },
+  {
+    "cid": "1473753719",
+    "duration": "07:25",
+    "number": 60,
+    "p": 60,
+    "title": "手动重置Kafka偏移量offset"
+  },
+  {
+    "cid": "1473753649",
+    "duration": "10:10",
+    "number": 61,
+    "p": 61,
+    "title": "消息消费时偏移量策略的配置"
+  },
+  {
+    "cid": "1473753907",
+    "duration": "07:42",
+    "number": 62,
+    "p": 62,
+    "title": "Spring Boot集成Kafka发送Message对象消息"
+  },
+  {
+    "cid": "1473753697",
+    "duration": "12:00",
+    "number": 63,
+    "p": 63,
+    "title": "Spring Boot集成Kafka发送ProducerRecord对象消息"
+  },
+  {
+    "cid": "1473754210",
+    "duration": "04:14",
+    "number": 64,
+    "p": 64,
+    "title": "Spring Boot集成Kafka发送指定分区的消息"
+  },
+  {
+    "cid": "1473754178",
+    "duration": "07:21",
+    "number": 65,
+    "p": 65,
+    "title": "Spring Boot集成Kafka发送默认topic消息"
+  },
+  {
+    "cid": "1473754417",
+    "duration": "03:14",
+    "number": 66,
+    "p": 66,
+    "title": "kafkaTemplate.send()和kafkaTemplate.sendDefault()的比较"
+  },
+  {
+    "cid": "1473754444",
+    "duration": "04:42",
+    "number": 67,
+    "p": 67,
+    "title": "获取生产者消息发送结果"
+  },
+  {
+    "cid": "1473754475",
+    "duration": "11:18",
+    "number": 68,
+    "p": 68,
+    "title": "阻塞式获取生产者消息发送的结果"
+  },
+  {
+    "cid": "1473754488",
+    "duration": "10:52",
+    "number": 69,
+    "p": 69,
+    "title": "非阻塞式获取生产者消息发送的结果"
+  },
+  {
+    "cid": "1473754730",
+    "duration": "05:20",
+    "number": 70,
+    "p": 70,
+    "title": "SpringBoot集成Kafka开发发送对象消息"
+  },
+  {
+    "cid": "1473754769",
+    "duration": "04:06",
+    "number": 71,
+    "p": 71,
+    "title": "SpringBoot集成Kafka自动装配的KafkaTemplate"
+  },
+  {
+    "cid": "1473754885",
+    "duration": "09:39",
+    "number": 72,
+    "p": 72,
+    "title": "SpringBoot集成Kafka开发发送对象消息序列化"
+  },
+  {
+    "cid": "1473755242",
+    "duration": "02:39",
+    "number": 73,
+    "p": 73,
+    "title": "SpringBoot集成Kafka开发发送消息的KafkaTemplate注入"
+  },
+  {
+    "cid": "1473755254",
+    "duration": "05:25",
+    "number": 74,
+    "p": 74,
+    "title": "Kafka的核心概念Replica副本"
+  },
+  {
+    "cid": "1473755313",
+    "duration": "09:22",
+    "number": 75,
+    "p": 75,
+    "title": "Kafka命令行脚本创建topic并指定分区和副本"
+  },
+  {
+    "cid": "1473755337",
+    "duration": "08:29",
+    "number": 76,
+    "p": 76,
+    "title": "SpringBoot集成Kafka创建topic并指定分区和副本"
+  },
+  {
+    "cid": "1473755409",
+    "duration": "07:44",
+    "number": 77,
+    "p": 77,
+    "title": "SpringBoot集成Kafka创建topic并指定分区和副本"
+  },
+  {
+    "cid": "1473755200",
+    "duration": "04:09",
+    "number": 78,
+    "p": 78,
+    "title": "生产者发送消息的分区策略测试"
+  },
+  {
+    "cid": "1473755552",
+    "duration": "09:33",
+    "number": 79,
+    "p": 79,
+    "title": "生产者发送消息的分区策略源码分析"
+  },
+  {
+    "cid": "1473755832",
+    "duration": "10:59",
+    "number": 80,
+    "p": 80,
+    "title": "生产者发送消息的分区策略源码分析"
+  },
+  {
+    "cid": "1473755883",
+    "duration": "04:30",
+    "number": 81,
+    "p": 81,
+    "title": "生产者发送消息的分区策略源RoundRobinPartitioner"
+  },
+  {
+    "cid": "1473755946",
+    "duration": "08:32",
+    "number": 82,
+    "p": 82,
+    "title": "生产者发送消息配置分区策略RoundRobinPartitioner"
+  },
+  {
+    "cid": "1473756056",
+    "duration": "07:50",
+    "number": 83,
+    "p": 83,
+    "title": "生产者发送消息配置分区策略RoundRobinPartitioner测试"
+  },
+  {
+    "cid": "1473756100",
+    "duration": "06:52",
+    "number": 84,
+    "p": 84,
+    "title": "生产者发送消息自定义分区策略"
+  },
+  {
+    "cid": "1473756241",
+    "duration": "04:57",
+    "number": 85,
+    "p": 85,
+    "title": "生产者发送消息自定义分区策略"
+  },
+  {
+    "cid": "1473756370",
+    "duration": "05:44",
+    "number": 86,
+    "p": 86,
+    "title": "Kafka生产者发送消息的流程"
+  },
+  {
+    "cid": "1473756629",
+    "duration": "07:00",
+    "number": 87,
+    "p": 87,
+    "title": "Kafka自定义消息发送的拦截器"
+  },
+  {
+    "cid": "1473756600",
+    "duration": "05:21",
+    "number": 88,
+    "p": 88,
+    "title": "Kafka自定义消息发送的拦截器测试"
+  },
+  {
+    "cid": "1473756577",
+    "duration": "09:16",
+    "number": 89,
+    "p": 89,
+    "title": "SpringBoot集成Kafka开发接收消息体内容"
+  },
+  {
+    "cid": "1473756745",
+    "duration": "05:55",
+    "number": 90,
+    "p": 90,
+    "title": "SpringBoot集成Kafka开发接收消息头内容"
+  },
+  {
+    "cid": "1473756697",
+    "duration": "05:01",
+    "number": 91,
+    "p": 91,
+    "title": "SpringBoot集成Kafka开发接收消息所有内容"
+  },
+  {
+    "cid": "1473756982",
+    "duration": "07:58",
+    "number": 92,
+    "p": 92,
+    "title": "SpringBoot集成Kafka开发接收对象消息"
+  },
+  {
+    "cid": "1473757091",
+    "duration": "04:14",
+    "number": 93,
+    "p": 93,
+    "title": "SpringBoot集成Kafka开发接收对象消息"
+  },
+  {
+    "cid": "1473757406",
+    "duration": "07:14",
+    "number": 94,
+    "p": 94,
+    "title": "SpringBoot集成Kafka开发接收对象消息"
+  },
+  {
+    "cid": "1473757443",
+    "duration": "04:18",
+    "number": 95,
+    "p": 95,
+    "title": "SpringBoot集成Kafka开发接收消息监听器注解"
+  },
+  {
+    "cid": "1473812377",
+    "duration": "07:00",
+    "number": 96,
+    "p": 96,
+    "title": "SpringBoot集成Kafka开发接收消息监听器手动确认消息"
+  },
+  {
+    "cid": "1473815422",
+    "duration": "07:25",
+    "number": 97,
+    "p": 97,
+    "title": "SpringBoot集成Kafka开发接收消息监听器手动确认消息"
+  },
+  {
+    "cid": "1474673739",
+    "duration": "05:06",
+    "number": 98,
+    "p": 98,
+    "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息"
+  },
+  {
+    "cid": "1474673847",
+    "duration": "06:32",
+    "number": 99,
+    "p": 99,
+    "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息"
+  },
+  {
+    "cid": "1474673957",
+    "duration": "07:22",
+    "number": 100,
+    "p": 100,
+    "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息"
+  },
+  {
+    "cid": "1474680993",
+    "duration": "07:12",
+    "number": 101,
+    "p": 101,
+    "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息"
+  },
+  {
+    "cid": "1474819590",
+    "duration": "05:31",
+    "number": 102,
+    "p": 102,
+    "title": "SpringBoot集成Kafka开发批量消费消息"
+  },
+  {
+    "cid": "1474819750",
+    "duration": "04:07",
+    "number": 103,
+    "p": 103,
+    "title": "SpringBoot集成Kafka开发批量消费消息"
+  },
+  {
+    "cid": "1474819778",
+    "duration": "05:01",
+    "number": 104,
+    "p": 104,
+    "title": "SpringBoot集成Kafka开发批量消费消息"
+  },
+  {
+    "cid": "1475207236",
+    "duration": "08:07",
+    "number": 105,
+    "p": 105,
+    "title": "SpringBoot集成Kafka开发消费消息拦截器-定义ConsumerInterceptor"
+  },
+  {
+    "cid": "1475207198",
+    "duration": "08:17",
+    "number": 106,
+    "p": 106,
+    "title": "SpringBoot集成Kafka开发消费消息拦截器-配置ConsumerFactory"
+  },
+  {
+    "cid": "1475207412",
+    "duration": "05:49",
+    "number": 107,
+    "p": 107,
+    "title": "SpringBoot集成Kafka开发消费消息拦截器-ConsumerFactory"
+  },
+  {
+    "cid": "1475207530",
+    "duration": "12:09",
+    "number": 108,
+    "p": 108,
+    "title": "SpringBoot集成Kafka开发消费消息拦截器-KafkaListenerContainerFactory"
+  },
+  {
+    "cid": "1475207486",
+    "duration": "01:12",
+    "number": 109,
+    "p": 109,
+    "title": "SpringBoot集成Kafka开发消费消息拦截器-消费者准备"
+  },
+  {
+    "cid": "1475207702",
+    "duration": "06:12",
+    "number": 110,
+    "p": 110,
+    "title": "SpringBoot集成Kafka开发消费消息拦截器-测试验证"
+  },
+  {
+    "cid": "1475290925",
+    "duration": "08:17",
+    "number": 111,
+    "p": 111,
+    "title": "SpringBoot集成Kafka开发消息转发"
+  },
+  {
+    "cid": "1475874195",
+    "duration": "05:45",
+    "number": 112,
+    "p": 112,
+    "title": "Kafka消息消费时的分区策略接口及实现类"
+  },
+  {
+    "cid": "1475874331",
+    "duration": "06:10",
+    "number": 113,
+    "p": 113,
+    "title": "Kafka消息消费时的默认分区策略实现RangeAssignor"
+  },
+  {
+    "cid": "1475874259",
+    "duration": "04:58",
+    "number": 114,
+    "p": 114,
+    "title": "Kafka消息消费时的默认分区策略RangeAssignor具体分配方式"
+  },
+  {
+    "cid": "1475874515",
+    "duration": "10:54",
+    "number": 115,
+    "p": 115,
+    "title": "Kafka消息消费时的默认分区策略RangeAssignor代码测试验证"
+  },
+  {
+    "cid": "1475941391",
+    "duration": "07:55",
+    "number": 116,
+    "p": 116,
+    "title": "Kafka消息消费时的分区策略RoundRobinAssignor"
+  },
+  {
+    "cid": "1475941702",
+    "duration": "09:27",
+    "number": 117,
+    "p": 117,
+    "title": "Kafka消息消费时的分区策略RoundRobinAssignor代码测试验证"
+  },
+  {
+    "cid": "1476036619",
+    "duration": "07:39",
+    "number": 118,
+    "p": 118,
+    "title": "Kafka消息消费时的分区策略StickyAssignor和CooperativeStickyAssignor"
+  },
+  {
+    "cid": "1476304647",
+    "duration": "10:07",
+    "number": 119,
+    "p": 119,
+    "title": "Kafka事件消息数据的存储"
+  },
+  {
+    "cid": "1476304691",
+    "duration": "05:49",
+    "number": 120,
+    "p": 120,
+    "title": "Kafka的__consumer_offsets主题"
+  },
+  {
+    "cid": "1477138530",
+    "duration": "05:34",
+    "number": 121,
+    "p": 121,
+    "title": "Kafka的__consumer_offsets主题数据查看"
+  },
+  {
+    "cid": "1477138576",
+    "duration": "02:50",
+    "number": 122,
+    "p": 122,
+    "title": "Kafka的Offset详解-生产者Offset"
+  },
+  {
+    "cid": "1477138718",
+    "duration": "06:51",
+    "number": 123,
+    "p": 123,
+    "title": "Kafka的Offset详解-消费者Offset"
+  },
+  {
+    "cid": "1477138851",
+    "duration": "05:26",
+    "number": 124,
+    "p": 124,
+    "title": "Kafka的Offset详解-生产者Offset代码演示"
+  },
+  {
+    "cid": "1477138884",
+    "duration": "11:16",
+    "number": 125,
+    "p": 125,
+    "title": "Kafka的Offset详解-消费者Offset代码演示默认从最新位置消费"
+  },
+  {
+    "cid": "1477139117",
+    "duration": "06:28",
+    "number": 126,
+    "p": 126,
+    "title": "Kafka的Offset详解-消费者Offset代码演示默认从最新位置消费"
+  },
+  {
+    "cid": "1477139092",
+    "duration": "07:33",
+    "number": 127,
+    "p": 127,
+    "title": "Kafka的Offset详解-消费者Offset代码演示总结"
+  },
+  {
+    "cid": "1477465770",
+    "duration": "03:01",
+    "number": 128,
+    "p": 128,
+    "title": "Kafka集群的搭建-整体介绍"
+  },
+  {
+    "cid": "1477465943",
+    "duration": "03:37",
+    "number": 129,
+    "p": 129,
+    "title": "Kafka集群的搭建-准备3个Kafka"
+  },
+  {
+    "cid": "1477466039",
+    "duration": "06:27",
+    "number": 130,
+    "p": 130,
+    "title": "Kafka集群的搭建-配置文件"
+  },
+  {
+    "cid": "1477466079",
+    "duration": "05:43",
+    "number": 131,
+    "p": 131,
+    "title": "Kafka集群的搭建-3台配置文件"
+  },
+  {
+    "cid": "1477466262",
+    "duration": "05:47",
+    "number": 132,
+    "p": 132,
+    "title": "Kafka集群的测试-运行Zookeeper"
+  },
+  {
+    "cid": "1477466363",
+    "duration": "04:29",
+    "number": 133,
+    "p": 133,
+    "title": "Kafka集群的测试-运行3台Kafka"
+  },
+  {
+    "cid": "1477499261",
+    "duration": "06:36",
+    "number": 134,
+    "p": 134,
+    "title": "Kafka集群的测试-SpringBoot连接集群Kafka"
+  },
+  {
+    "cid": "1477512969",
+    "duration": "05:42",
+    "number": 135,
+    "p": 135,
+    "title": "Kafka集群的测试-SpringBoot连接集群Kafka收发消息"
+  },
+  {
+    "cid": "1478291760",
+    "duration": "04:19",
+    "number": 136,
+    "p": 136,
+    "title": "Kafka的集群架构分析"
+  },
+  {
+    "cid": "1478292107",
+    "duration": "03:28",
+    "number": 137,
+    "p": 137,
+    "title": "Kafka的集群架构分区和副本机制"
+  },
+  {
+    "cid": "1478292142",
+    "duration": "02:40",
+    "number": 138,
+    "p": 138,
+    "title": "Kafka的集群架构分区和多副本机制分析"
+  },
+  {
+    "cid": "1478292087",
+    "duration": "04:17",
+    "number": 139,
+    "p": 139,
+    "title": "Kafka的集群架构分区和多副本机制分析"
+  },
+  {
+    "cid": "1478292441",
+    "duration": "05:57",
+    "number": 140,
+    "p": 140,
+    "title": "Kafka的集群架构分区和多副本机制分析"
+  },
+  {
+    "cid": "1478292292",
+    "duration": "08:37",
+    "number": 141,
+    "p": 141,
+    "title": "Kafka集群架构的多副本架构"
+  },
+  {
+    "cid": "1478292741",
+    "duration": "02:50",
+    "number": 142,
+    "p": 142,
+    "title": "Kafka中的12个核心概念梳理"
+  },
+  {
+    "cid": "1478292766",
+    "duration": "03:06",
+    "number": 143,
+    "p": 143,
+    "title": "Kafka中的12个核心概念-ISR副本"
+  },
+  {
+    "cid": "1478292905",
+    "duration": "05:32",
+    "number": 144,
+    "p": 144,
+    "title": "Kafka中的12个核心概念-ISR副本"
+  },
+  {
+    "cid": "1482756371",
+    "duration": "01:48",
+    "number": 145,
+    "p": 145,
+    "title": "Kafka中的12个核心概念-LEO"
+  },
+  {
+    "cid": "1482756579",
+    "duration": "04:10",
+    "number": 146,
+    "p": 146,
+    "title": "Kafka中的12个核心概念-HW"
+  },
+  {
+    "cid": "1482756841",
+    "duration": "03:19",
+    "number": 147,
+    "p": 147,
+    "title": "Kafka中ISR、HW、LEO的关系"
+  },
+  {
+    "cid": "1482756892",
+    "duration": "04:07",
+    "number": 148,
+    "p": 148,
+    "title": "Kafka基于KRaft方式集群架构分析"
+  },
+  {
+    "cid": "1482757165",
+    "duration": "04:52",
+    "number": 149,
+    "p": 149,
+    "title": "Kafka基于KRaft方式集群架构分析"
+  },
+  {
+    "cid": "1482757098",
+    "duration": "04:08",
+    "number": 150,
+    "p": 150,
+    "title": "Kafka基于KRaft方式集群服务器规划"
+  },
+  {
+    "cid": "1482757409",
+    "duration": "02:57",
+    "number": 151,
+    "p": 151,
+    "title": "Kafka基于KRaft方式集群准备Broker服务器"
+  },
+  {
+    "cid": "1482757446",
+    "duration": "06:39",
+    "number": 152,
+    "p": 152,
+    "title": "Kafka基于KRaft方式集群配置Broker服务器"
+  },
+  {
+    "cid": "1482757298",
+    "duration": "07:16",
+    "number": 153,
+    "p": 153,
+    "title": "Kafka基于KRaft方式集群配置Broker服务器"
+  },
+  {
+    "cid": "1482757549",
+    "duration": "08:25",
+    "number": 154,
+    "p": 154,
+    "title": "Kafka基于KRaft方式集群启动Broker服务器"
+  },
+  {
+    "cid": "1482757741",
+    "duration": "06:45",
+    "number": 155,
+    "p": 155,
+    "title": "Kafka基于KRaft方式集群测试"
+  },
+  {
+    "cid": "1482757833",
+    "duration": "03:19",
+    "number": 156,
+    "p": 156,
+    "title": "Kafka基于KRaft方式集群测试与总结"
+  }
+]
