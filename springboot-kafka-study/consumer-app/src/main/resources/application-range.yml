@@ -3,3 +3,8 @@ spring:
     consumer:
       properties:
         partition.assignment.strategy: org.apache.kafka.clients.consumer.RangeAssignor
+
+app:
+  kafka:
+    topic: study.events.assignment
+    concurrency: 3

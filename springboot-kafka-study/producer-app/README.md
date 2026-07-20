@@ -33,10 +33,19 @@ dashboard/ReceiptListener
 日常演示只看 `web → producer → dashboard`；学到对应章节时再进入 `course`，两类代码不会
 混在同一个类里。
 
+`ProducerApiExamples` 包含 `send()`、`sendDefault()`、`Message`、`ProducerRecord`、
+指定 Partition、阻塞获取结果和异步回调，分别对应 P62–P73。
+
 ## 启动
 
 ```bash
 mvn spring-boot:run
+```
+
+P81–P83 切换为 Kafka 自带的 `RoundRobinPartitioner`：
+
+```bash
+mvn spring-boot:run -Dspring-boot.run.profiles=roundrobin-producer
 ```
 
 打开消息观察页面：[http://localhost:18080](http://localhost:18080)。页面支持：

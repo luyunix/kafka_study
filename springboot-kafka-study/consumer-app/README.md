@@ -21,7 +21,8 @@ Kafka: study.multi.events.receipts
 
 - `consumer`：默认消费监听器，也是多实例演示的核心。
 - `model`：收到的事件和发回的消费回执。
-- `course`：老师课程中的手动 ACK、批量消费、固定 Offset、消费者拦截器和消息转发。
+- `course`：老师课程中的消息体/消息头/完整记录、手动 ACK、批量消费、固定 Offset、
+  消费者拦截器和消息转发。
 
 `course` 中的额外监听器默认不启动，只有启用 `course-extras` Profile 时才参与消费，避免
 学习主流程时被高级示例干扰。
@@ -59,3 +60,15 @@ INSTANCE_ID=consumer-1 CONSUMER_CONCURRENCY=3 mvn spring-boot:run
 ```bash
 mvn spring-boot:run -Dspring-boot.run.profiles=course-extras
 ```
+
+观察 10 个分区分给 3 个 Consumer 线程：
+
+```bash
+mvn spring-boot:run -Dspring-boot.run.profiles=range
+mvn spring-boot:run -Dspring-boot.run.profiles=roundrobin
+mvn spring-boot:run -Dspring-boot.run.profiles=sticky
+mvn spring-boot:run -Dspring-boot.run.profiles=cooperative-sticky
+```
+
+四个 Profile 都监听 `study.events.assignment`，区别只有
+`partition.assignment.strategy`，便于直接对照分配结果。

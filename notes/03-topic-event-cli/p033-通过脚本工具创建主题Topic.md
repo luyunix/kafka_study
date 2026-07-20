@@ -28,10 +28,30 @@ flowchart LR
     N3 --> N4
 ```
 
-## 老师的完整讲解（按视频顺序校正）
+## 先用准确命令完成本节
 
-> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、
-> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。
+创建、查看、描述和删除 Topic：
+
+```bash
+bin/kafka-topics.sh \
+  --bootstrap-server localhost:9092 \
+  --create \
+  --topic helloTopic \
+  --partitions 3 \
+  --replication-factor 1
+
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic helloTopic
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic helloTopic
+```
+
+`--bootstrap-server` 指定要连接的 Broker；`--topic` 指定操作对象。课程音频中被识别成
+“Crit”“历史的”“Nokohost”的词，分别对应 `--create`、`--list`、`localhost`。
+
+## 老师的完整讲解顺序（ASR 辅助复核）
+
+> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。
+> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。
 
 ### 1. 00:00–01:03
 

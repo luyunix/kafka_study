@@ -14,15 +14,21 @@ public class CourseTopicConfig {
         return new KafkaAdmin.NewTopics(
                 topic(CourseTopics.MANUAL_ACK),
                 topic(CourseTopics.BATCH),
-                topic(CourseTopics.OFFSET),
+                topic(CourseTopics.OFFSET, 5),
+                topic(CourseTopics.RECEIVE),
+                topic(CourseTopics.ASSIGNMENT, 10),
                 topic(CourseTopics.FORWARD_INPUT),
                 topic(CourseTopics.FORWARD_OUTPUT)
         );
     }
 
     private NewTopic topic(String name) {
+        return topic(name, 3);
+    }
+
+    private NewTopic topic(String name, int partitions) {
         return TopicBuilder.name(name)
-                .partitions(3)
+                .partitions(partitions)
                 .replicas(1)
                 .build();
     }

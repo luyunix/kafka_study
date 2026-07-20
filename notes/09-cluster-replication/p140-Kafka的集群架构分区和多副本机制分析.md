@@ -32,10 +32,10 @@ flowchart LR
 
 一个 Partition 的副本中只有 Leader 负责客户端读写，Follower 复制数据。Leader 所在 Broker 宕机后，Kafka 会从合格的同步副本中选出新 Leader。`kafka-topics.sh --describe` 的结果要分别看 Partition、Leader、Replicas 和 ISR，不能只看副本总数。
 
-## 老师的完整讲解（按视频顺序校正）
+## 老师的完整讲解顺序（ASR 辅助复核）
 
-> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、
-> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。
+> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。
+> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。
 
 ### 1. 00:00–00:50
 

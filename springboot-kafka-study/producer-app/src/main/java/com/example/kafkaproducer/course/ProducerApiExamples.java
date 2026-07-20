@@ -37,6 +37,16 @@ public class ProducerApiExamples {
         return kafkaTemplate.send(defaultTopic, key, event);
     }
 
+    /**
+     * P65–P66：Topic 由 spring.kafka.template.default-topic 提供。
+     */
+    public CompletableFuture<SendResult<String, StudyEvent>> sendDefault(
+            String key,
+            StudyEvent event
+    ) {
+        return kafkaTemplate.sendDefault(key, event);
+    }
+
     public CompletableFuture<SendResult<String, StudyEvent>> sendMessage(StudyEvent event) {
         Message<StudyEvent> message = MessageBuilder
                 .withPayload(event)

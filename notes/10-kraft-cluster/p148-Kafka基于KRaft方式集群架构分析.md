@@ -32,10 +32,10 @@ flowchart LR
 
 这一节先复盘 ZooKeeper 架构：Broker 中选出 Controller，Controller 把 Topic、Partition 等元数据写入 ZooKeeper。后续 KRaft 的变化点是把这套元数据控制面迁入 Kafka 自身的 Controller Quorum；Producer、Consumer、Broker 分区日志等数据面仍然存在。
 
-## 老师的完整讲解（按视频顺序校正）
+## 老师的完整讲解顺序（ASR 辅助复核）
 
-> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、
-> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。
+> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。
+> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。
 
 ### 1. 00:00–00:49
 

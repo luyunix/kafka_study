@@ -152,6 +152,11 @@ VISUAL_NOTES = {
 
 
 EDITOR_NOTES = {
+    33: (
+        "本节使用 `bin/kafka-topics.sh` 管理 Topic。创建时至少写 `--bootstrap-server`、"
+        "`--create` 和 `--topic`；`--list` 查看主题，`--describe` 查看分区、副本与 ISR，"
+        "`--delete` 删除主题。准确命令见 `notes/00-practical-command-reference.md`。"
+    ),
     55: (
         "这节的闭环是：先启动 ZooKeeper 与 Kafka；第一次由 Windows/Spring Boot 连接时故意观察连接失败；"
         "随后修改 `server.properties` 中的 `listeners` 与 `advertised.listeners`，让 Broker 绑定监听地址并"
@@ -181,6 +186,21 @@ EDITOR_NOTES = {
         "这一节先复盘 ZooKeeper 架构：Broker 中选出 Controller，Controller 把 Topic、Partition 等元数据"
         "写入 ZooKeeper。后续 KRaft 的变化点是把这套元数据控制面迁入 Kafka 自身的 Controller Quorum；"
         "Producer、Consumer、Broker 分区日志等数据面仍然存在。"
+    ),
+    60: (
+        "重置 Offset 使用 `kafka-consumer-groups.sh --reset-offsets`。必须先停止该组的消费者，"
+        "先省略 `--execute` 预览，再用 `--to-earliest --execute` 回到最早位置，或用"
+        " `--to-latest --execute` 跳到日志末端。"
+    ),
+    61: (
+        "`auto-offset-reset` 只在消费组没有有效已提交 Offset 时生效：`earliest` 从最早可用"
+        "位置开始，`latest` 从日志末端开始，`none` 在无 Offset 时抛错。已有提交进度时三者都"
+        "不会覆盖该进度。"
+    ),
+    125: (
+        "第一次启动且使用全新消费组时，默认 `latest` 会把起点放在 `LOG-END-OFFSET`，所以看不到"
+        "历史消息。`kafka-consumer-groups.sh --describe` 中，`CURRENT-OFFSET` 是下一条消费位置，"
+        "`LOG-END-OFFSET` 是日志末端，`LAG` 是尚未消费数量。"
     ),
 }
 
@@ -636,9 +656,9 @@ def episode_markdown(root: Path, item: dict, asr: dict, all_items: list[dict]) -
     lines.extend(("```", ""))
     if number in EDITOR_NOTES:
         lines.extend(("## 先用白话读懂", "", EDITOR_NOTES[number], ""))
-    lines.extend(("## 老师的完整讲解（按视频顺序校正）", "",
-                  "> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、",
-                  "> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。", ""))
+    lines.extend(("## 老师的完整讲解顺序（ASR 辅助复核）", "",
+                  "> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。",
+                  "> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。", ""))
     for index, group in enumerate(groups, 1):
         lines.extend((
             f"### {index}. {clock(group['start'])}–{clock(group['end'])}",
@@ -757,6 +777,10 @@ def root_readme(root: Path, items: list[dict]) -> str:
         "3. 不确定老师是否提到某个细节时，打开对应的带时间戳 ASR 核查。",
         "4. 用 `kafka_from_scratch` 的小实验验证分区、消费组、Offset、ISR/HW 等核心机制。",
         "",
+        "命令行、Offset 和集群章节先配合",
+        "[Kafka 3.7.0 实操命令校正版](./notes/00-practical-command-reference.md) 阅读，避免原声 ASR",
+        "中的英文参数同音字影响操作。",
+        "",
         "## 课程目录",
         "",
     ]
@@ -778,7 +802,8 @@ def root_readme(root: Path, items: list[dict]) -> str:
         "- [Kafka 核心术语速查](./GLOSSARY.md)",
         "- [Java 17 + Spring Boot + Spring Kafka 课程配套工程（含独立生产者/消费者）](./springboot-kafka-study/README.md)",
         "- [Kafka 核心机制从零实现练习包](./kafka_from_scratch/README.md)",
-        "- Java 工程测试：`cd springboot-kafka-study && mvn test`",
+        "- Java 生产者测试：`cd springboot-kafka-study/producer-app && mvn test`",
+        "- Java 消费者测试：`cd springboot-kafka-study/consumer-app && mvn test`",
         "- 运行测试：`python -m unittest discover -s tests -p 'test_*.py'`",
         "",
         "## 来源与完整性",

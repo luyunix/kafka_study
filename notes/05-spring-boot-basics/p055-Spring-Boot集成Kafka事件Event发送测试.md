@@ -32,10 +32,10 @@ flowchart LR
 
 这节的闭环是：先启动 ZooKeeper 与 Kafka；第一次由 Windows/Spring Boot 连接时故意观察连接失败；随后修改 `server.properties` 中的 `listeners` 与 `advertised.listeners`，让 Broker 绑定监听地址并向外公布客户端真正可达的 IP；重启 Kafka 后再次发送 Event，最后在 IDEA Kafka 插件中看到 `helloTopic` 的消息数量增加。
 
-## 老师的完整讲解（按视频顺序校正）
+## 老师的完整讲解顺序（ASR 辅助复核）
 
-> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、
-> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。
+> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。
+> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。
 
 ### 1. 00:00–00:47
 

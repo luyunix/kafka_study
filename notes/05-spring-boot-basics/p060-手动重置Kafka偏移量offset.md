@@ -28,10 +28,43 @@ flowchart LR
     N3 --> N4
 ```
 
-## 老师的完整讲解（按视频顺序校正）
+## 先用白话和准确命令读懂
 
-> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、
-> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。
+有两种方式重新读取历史消息：
+
+1. 换一个全新的 Consumer Group ID。
+2. 停止原消费组的所有消费者，再重置该组保存的 Offset。
+
+先预览重置结果：
+
+```bash
+bin/kafka-consumer-groups.sh \
+  --bootstrap-server localhost:9092 \
+  --group helloGroup \
+  --topic helloTopic \
+  --reset-offsets \
+  --to-earliest
+```
+
+确认后真正执行：
+
+```bash
+bin/kafka-consumer-groups.sh \
+  --bootstrap-server localhost:9092 \
+  --group helloGroup \
+  --topic helloTopic \
+  --reset-offsets \
+  --to-earliest \
+  --execute
+```
+
+把位置移到日志末端则使用 `--to-latest --execute`。如果消费组仍处于 `Stable`、还有消费者
+在线，Kafka 会拒绝重置；这正是老师演示中第一次执行报错的原因。
+
+## 老师的完整讲解顺序（ASR 辅助复核）
+
+> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。
+> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。
 
 ### 1. 00:00–01:02
 

@@ -28,10 +28,32 @@ flowchart LR
     N3 --> N4
 ```
 
-## 老师的完整讲解（按视频顺序校正）
+## 先用白话读懂实验
 
-> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、
-> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。
+Topic 已经有 4 条历史消息，位置为 0、1、2、3，日志末端位置就是 4。一个从未消费过的
+新消费组使用默认 `latest` 时，会把起点放在 4，因此不会读取前面 4 条；之后再发送两条，
+它会读取位置 4、5 的新消息。
+
+查看消费组：
+
+```bash
+bin/kafka-consumer-groups.sh \
+  --bootstrap-server localhost:9092 \
+  --describe \
+  --group osGroup
+```
+
+- `CURRENT-OFFSET`：消费组下一条准备读取的位置。
+- `LOG-END-OFFSET`：当前分区日志末端。
+- `LAG`：两者之差，即尚未消费的消息数量。
+
+因此老师第一次看到的是 `CURRENT-OFFSET=4`、`LOG-END-OFFSET=4`、`LAG=0`；再发送两条但
+尚未消费时会变成末端 6、LAG 2，消费完成后 CURRENT-OFFSET 前进到 6、LAG 回到 0。
+
+## 老师的完整讲解顺序（ASR 辅助复核）
+
+> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。
+> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。
 
 ### 1. 00:00–01:00
 

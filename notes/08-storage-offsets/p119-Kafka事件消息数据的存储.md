@@ -32,10 +32,10 @@ flowchart LR
 
 Kafka 按 `log.dirs` 保存数据，默认示例目录是 `/tmp/kafka-logs`。每个 Topic-Partition 对应 `<topic>-<partition>` 目录；`.log` 保存记录，`.index` 按 Offset 定位，`.timeindex` 按时间定位，快照和 `leader-epoch-checkpoint` 用于恢复与 Leader Epoch 信息，`partition.metadata` 保存分区元数据。
 
-## 老师的完整讲解（按视频顺序校正）
+## 老师的完整讲解顺序（ASR 辅助复核）
 
-> 下面保留老师的完整讲解顺序，并修正 Kafka、Java、ZooKeeper、
-> Topic、Partition、Offset 等常见识别错误。它不是压缩摘要；原始 ASR 在后面单独保留。
+> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。
+> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。
 
 ### 1. 00:00–00:56
 

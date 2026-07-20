@@ -17,6 +17,10 @@
 3. 不确定老师是否提到某个细节时，打开对应的带时间戳 ASR 核查。
 4. 用 `kafka_from_scratch` 的小实验验证分区、消费组、Offset、ISR/HW 等核心机制。
 
+命令行、Offset 和集群章节先配合
+[Kafka 3.7.0 实操命令校正版](./notes/00-practical-command-reference.md) 阅读，避免原声 ASR
+中的英文参数同音字影响操作。
+
 ## 课程目录
 
 ### 第 1 章：课程导学与 Kafka 身世
@@ -230,7 +234,8 @@
 - [Kafka 核心术语速查](./GLOSSARY.md)
 - [Java 17 + Spring Boot + Spring Kafka 课程配套工程（含独立生产者/消费者）](./springboot-kafka-study/README.md)
 - [Kafka 核心机制从零实现练习包](./kafka_from_scratch/README.md)
-- Java 工程测试：`cd springboot-kafka-study && mvn test`
+- Java 生产者测试：`cd springboot-kafka-study/producer-app && mvn test`
+- Java 消费者测试：`cd springboot-kafka-study/consumer-app && mvn test`
 - 运行测试：`python -m unittest discover -s tests -p 'test_*.py'`
 
 ## 来源与完整性

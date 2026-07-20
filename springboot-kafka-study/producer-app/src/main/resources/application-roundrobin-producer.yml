@@ -1,0 +1,5 @@
+spring:
+  kafka:
+    producer:
+      properties:
+        partitioner.class: org.apache.kafka.clients.producer.RoundRobinPartitioner

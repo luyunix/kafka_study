@@ -6,23 +6,25 @@
     <title>Kafka 消息流观察台</title>
     <style>
         :root {
-            color-scheme: dark;
-            --bg: #09111f;
-            --panel: #101b2d;
-            --line: #263751;
-            --text: #e7eefb;
-            --muted: #93a7c3;
-            --blue: #4ba3ff;
-            --green: #47d7a0;
-            --orange: #ffb45b;
-            --red: #ff6b7a;
+            color-scheme: light;
+            --bg: #f4f7fb;
+            --panel: #ffffff;
+            --line: #dbe4ef;
+            --text: #172235;
+            --muted: #66758a;
+            --blue: #2563eb;
+            --blue-soft: #edf4ff;
+            --green: #07845c;
+            --orange: #b85e08;
+            --red: #c93645;
+            --shadow: 0 10px 30px rgba(35, 55, 80, .08);
         }
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            min-width: 1080px;
             background:
-                radial-gradient(circle at 10% 0%, #142c4c 0, transparent 32%),
+                radial-gradient(circle at 8% 0%, #e4efff 0, transparent 30%),
+                radial-gradient(circle at 92% 8%, #edf9f4 0, transparent 25%),
                 var(--bg);
             color: var(--text);
             font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -33,19 +35,22 @@
             justify-content: space-between;
             padding: 28px 34px 20px;
             border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, .76);
+            backdrop-filter: blur(14px);
         }
-        h1 { margin: 0; font-size: 26px; letter-spacing: .02em; }
+        h1 { margin: 0; font-size: 26px; letter-spacing: .01em; color: #12213a; }
         header p { margin: 5px 0 0; color: var(--muted); }
         .status { display: flex; gap: 14px; }
         .metric {
             min-width: 116px;
             padding: 9px 14px;
-            background: #101d31cc;
+            background: rgba(255, 255, 255, .92);
             border: 1px solid var(--line);
-            border-radius: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(35, 55, 80, .05);
         }
         .metric span { display: block; color: var(--muted); font-size: 12px; }
-        .metric strong { font-size: 21px; }
+        .metric strong { font-size: 21px; color: #184a9c; }
         main { padding: 22px 34px 34px; }
         .composer {
             display: grid;
@@ -56,6 +61,7 @@
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: 14px;
+            box-shadow: var(--shadow);
         }
         label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; }
         input, select, button {
@@ -63,20 +69,33 @@
             border: 1px solid var(--line);
             border-radius: 8px;
             color: var(--text);
-            background: #0a1424;
+            background: #fff;
             padding: 0 11px;
             outline: none;
+            transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
         }
-        input:focus, select:focus { border-color: var(--blue); }
+        input:focus, select:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+        }
         button {
             cursor: pointer;
-            border-color: #2d7ec8;
-            background: #1768ac;
+            border-color: var(--blue);
+            background: var(--blue);
+            color: #fff;
             font-weight: 700;
         }
-        button:hover { filter: brightness(1.14); }
-        .secondary { border-color: var(--line); background: #18263a; }
-        .danger { border-color: #6b3540; background: #3b2029; }
+        button:hover { filter: brightness(1.04); transform: translateY(-1px); }
+        .secondary {
+            border-color: #cbdaf5;
+            background: var(--blue-soft);
+            color: #1d4f9c;
+        }
+        .danger {
+            border-color: #f0c8ce;
+            background: #fff1f3;
+            color: #a82d3a;
+        }
         .batchbar {
             display: flex;
             align-items: center;
@@ -104,6 +123,7 @@
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: 14px;
+            box-shadow: var(--shadow);
         }
         .section-head {
             display: flex;
@@ -116,15 +136,15 @@
         .badge {
             padding: 3px 9px;
             border-radius: 999px;
-            background: #172a43;
-            color: var(--blue);
+            background: var(--blue-soft);
+            color: #1d55b3;
             font-size: 12px;
         }
         .table-wrap { max-height: 590px; overflow: auto; }
         table { width: 100%; border-collapse: collapse; table-layout: fixed; }
         th, td {
             padding: 11px 10px;
-            border-bottom: 1px solid #1e2e44;
+            border-bottom: 1px solid #e8eef5;
             text-align: left;
             vertical-align: top;
             overflow: hidden;
@@ -135,19 +155,19 @@
             position: sticky;
             top: 0;
             z-index: 1;
-            background: #132035;
+            background: #f7f9fc;
             color: var(--muted);
             font-size: 11px;
             text-transform: uppercase;
         }
-        td code { color: #c4d8f4; }
+        td code { color: #52647a; }
         .partition {
             display: inline-grid;
             min-width: 28px;
             height: 24px;
             place-items: center;
             border-radius: 6px;
-            background: #233854;
+            background: #fff3df;
             color: var(--orange);
             font-weight: 800;
         }
@@ -161,9 +181,26 @@
         .empty { padding: 55px 20px; color: var(--muted); text-align: center; }
         .error { color: var(--red); }
         @media (max-width: 1200px) {
-            body { min-width: 900px; }
             .composer { grid-template-columns: 1fr 1fr; }
             .composer .wide { grid-column: span 2; }
+        }
+        @media (max-width: 900px) {
+            header { align-items: flex-start; gap: 20px; }
+            .status { flex-wrap: wrap; justify-content: flex-end; }
+            .metric { min-width: 100px; }
+            .flow { grid-template-columns: 1fr; }
+            .arrow { transform: rotate(90deg); height: 42px; }
+        }
+        @media (max-width: 680px) {
+            header { display: grid; padding: 22px 18px 18px; }
+            .status { justify-content: stretch; }
+            .metric { flex: 1; }
+            main { padding: 16px 14px 24px; }
+            .composer { grid-template-columns: 1fr; }
+            .composer .wide { grid-column: auto; }
+            .batchbar { align-items: stretch; flex-wrap: wrap; }
+            .hint { width: 100%; margin-left: 0; }
+            .flash { min-width: 0; flex: 1; }
         }
     </style>
 </head>
@@ -241,7 +278,7 @@
     const consumerColor = name => {
         let hash = 0;
         for (const char of name) hash = ((hash << 5) - hash) + char.charCodeAt(0);
-        return `hsl(${Math.abs(hash) % 360} 72% 68%)`;
+        return `hsl(${Math.abs(hash) % 360} 58% 38%)`;
     };
 
     function sentTable(items) {
