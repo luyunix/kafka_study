@@ -183,7 +183,10 @@
                     codeLanguage = rawLine.slice(3).trim();
                     codeLines = [];
                 } else {
-                    output.push(`<pre data-language="${escapeHtml(codeLanguage)}"><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+                    const source = escapeHtml(codeLines.join("\n"));
+                    output.push(codeLanguage.toLowerCase() === "mermaid"
+                        ? `<div class="mermaid-diagram" data-mermaid-state="pending">${source}</div>`
+                        : `<pre data-language="${escapeHtml(codeLanguage)}"><code>${source}</code></pre>`);
                     code = false;
                 }
                 continue;
@@ -232,10 +235,7 @@
             output.push(`<p>${inlineMarkdown(line, baseUrl)}</p>`);
         }
         closeList();
-        return output.join("\n").replace(
-            /(<h2>老师的完整讲解顺序[^<]*<\/h2>)([\s\S]*?)(<h2>关键术语<\/h2>)/,
-            '<details class="asr-details"><summary>展开老师完整原声讲解（ASR 辅助复核）</summary>$1$2</details>$3'
-        );
+        return output.join("\n");
     }
 
     async function openLesson(lesson, pushHash = true) {
@@ -256,10 +256,53 @@
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const markdown = await response.text();
             byId("article").innerHTML = renderMarkdown(markdown, lesson);
+            await renderMermaidDiagrams();
             bindArticleLinks();
         } catch (error) {
             byId("article").innerHTML =
                 `<div class="article-loading">课程笔记加载失败：${escapeHtml(error.message)}</div>`;
+        }
+    }
+
+    async function renderMermaidDiagrams() {
+        const diagrams = Array.from(
+            byId("article").querySelectorAll('.mermaid-diagram[data-mermaid-state="pending"]')
+        );
+        if (!diagrams.length || !window.mermaid) return;
+
+        mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: "strict",
+            theme: "base",
+            fontFamily: "Inter, system-ui, sans-serif",
+            flowchart: {curve: "basis", htmlLabels: true},
+            themeVariables: {
+                primaryColor: "#eaf3ff",
+                primaryTextColor: "#172235",
+                primaryBorderColor: "#7aa9e8",
+                lineColor: "#5278ad",
+                secondaryColor: "#fff7df",
+                tertiaryColor: "#f7faff",
+                fontSize: "16px"
+            }
+        });
+
+        for (const [index, diagram] of diagrams.entries()) {
+            const source = diagram.textContent || "";
+            diagram.dataset.mermaidState = "rendering";
+            try {
+                const id = `kafka-mermaid-${Date.now()}-${index}`;
+                const {svg, bindFunctions} = await mermaid.render(id, source);
+                if (!diagram.isConnected) continue;
+                diagram.innerHTML = svg;
+                diagram.dataset.mermaidState = "rendered";
+                if (bindFunctions) bindFunctions(diagram);
+            } catch {
+                if (!diagram.isConnected) continue;
+                diagram.innerHTML =
+                    `<p class="mermaid-error-title">流程图暂时无法渲染</p><pre><code>${escapeHtml(source)}</code></pre>`;
+                diagram.dataset.mermaidState = "error";
+            }
         }
     }
 

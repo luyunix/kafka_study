@@ -157,6 +157,12 @@ EDITOR_NOTES = {
         "`--create` 和 `--topic`；`--list` 查看主题，`--describe` 查看分区、副本与 ISR，"
         "`--delete` 删除主题。准确命令见 `notes/00-practical-command-reference.md`。"
     ),
+    52: (
+        "这节先在 IDEA 中创建一个 Spring Boot Maven 工程，并加入 Spring for Apache Kafka 依赖。"
+        "Spring Boot 会为 Kafka 客户端提供自动配置，开发时通常通过 `KafkaTemplate` 发送消息，"
+        "通过监听器接收消息；相比直接使用 Kafka 原生客户端，Spring 的封装减少了样板代码，"
+        "但 Topic、Partition、序列化和 Offset 等底层语义没有改变。"
+    ),
     55: (
         "这节的闭环是：先启动 ZooKeeper 与 Kafka；第一次由 Windows/Spring Boot 连接时故意观察连接失败；"
         "随后修改 `server.properties` 中的 `listeners` 与 `advertised.listeners`，让 Broker 绑定监听地址并"
@@ -172,6 +178,11 @@ EDITOR_NOTES = {
         "Kafka 按 `log.dirs` 保存数据，默认示例目录是 `/tmp/kafka-logs`。每个 Topic-Partition 对应"
         " `<topic>-<partition>` 目录；`.log` 保存记录，`.index` 按 Offset 定位，`.timeindex` 按时间定位，"
         "快照和 `leader-epoch-checkpoint` 用于恢复与 Leader Epoch 信息，`partition.metadata` 保存分区元数据。"
+    ),
+    120: (
+        "`__consumer_offsets` 是 Kafka 的内部 Topic，用来保存消费者组提交的 Offset 和协调相关数据。"
+        "它默认有多个分区；某个 Group 的记录进入哪个分区，由 Group ID 的哈希结果决定。"
+        "因此排查消费进度时必须同时带上 Group、Topic 和 Partition，不能把一个 Offset 当成全局位置。"
     ),
     140: (
         "一个 Partition 的副本中只有 Leader 负责客户端读写，Follower 复制数据。Leader 所在 Broker 宕机后，"
@@ -205,6 +216,17 @@ EDITOR_NOTES = {
 }
 
 
+# Short lessons sometimes rely on context established immediately before them.
+# Keep that bridge inside the timestamped explanation so the study page remains
+# understandable without inventing a second, untimestamped lecture.
+DETAIL_CONTEXT = {
+    109: (
+        "这一节承接前面已经配置好的 `ConsumerFactory` 和 `KafkaListenerContainerFactory`。老师先把消费者改回普通的单条消费，不启用批量监听；监听方法接收 `ConsumerRecord` 并打印。这样做是为了让测试只保留“消息到达—拦截器先执行—监听方法再消费”这条主线。",
+        "这里还没有完成最终验证，而是在准备观察点：下一步由生产者发出一条消息，消费端日志应当先出现消费者拦截器的输出，再出现监听方法打印的记录。这个先后顺序，就是判断 `ConsumerInterceptor` 是否真正接入监听容器工厂的依据。",
+    ),
+}
+
+
 REPLACEMENTS = (
     (r"KaftKa|KafKa|KafkaKafka|卡夫卡|卡附卡|卡不卡|卡FU卡|卡fu卡|卡布卡|卡帕卡|卡巴马|Karmuka", "Kafka"),
     (r"Kafka金角", "Kafka 精讲"),
@@ -222,9 +244,51 @@ REPLACEMENTS = (
     (r"ArktivMQ|Arktiv MQ|阿克提夫MQ", "ActiveMQ"),
     (r"Skala", "Scala"),
     (r"GMS规范", "JMS 规范"),
-    (r"Zooke[e]?per|Zookeeper|RooKeeper|Rookeeper|rookable|RU-PIPER|RUQ(?:able|方式)?", "ZooKeeper"),
+    (r"Zooke[e]?per|Zookeeper|RooKeeper|Rookeeper|Rookip|rookable|RU-PIPER|RUQ(?:able|方式)?", "ZooKeeper"),
     (r"SpringBoot", "Spring Boot"),
     (r"实名步头|史布内布特|史布蕊布特|史布蕊|史布", "Spring Boot"),
+    (r"史威布勒|史威布特|史不利布特", "Spring Boot"),
+    (r"史文麦斯基", "Spring Messaging"),
+    (r"史文类|SpringLate", "Spring"),
+    (r"史文", "Spring"),
+    (r"TypeLate|Temperate", "Template"),
+    (r"Kafka拿它", "Spring for Apache Kafka"),
+    (r"Spring Boot夫项目", "Spring Boot 项目"),
+    (r"GNV坐标", "GAV 坐标"),
+    (r"实踏者", "Starter"),
+    (r"假包|价包", "JAR 包"),
+    (r"Spring Boot困境", "Spring Boot 环境"),
+    (r"木轮", "默认"),
+    (r"接力是", "Jedis"),
+    (r"lighting", "Lettuce"),
+    (r"发送具，写读送具", "发送数据、读取数据"),
+    (r"破文件", "POM 文件"),
+    (r"扣端(?:的)?架包", "客户端 JAR 包"),
+    (r"瑞麗士|瑞丽士", "Redis"),
+    (r"Kamukawa、?Topic、?SH|Kafka、Topic、SH|Topic、Topic", "kafka-topics.sh"),
+    (r"销脚本", "Shell 脚本"),
+    (r"User、Locker、Kafka", "/usr/local/kafka"),
+    (r"当前部下", "当前目录下"),
+    (r"Crit", "--create"),
+    (r"历史的", "--list"),
+    (r"Nokohost", "localhost"),
+    (r"不得是Job、更是Sevon|不得是Job、Sevon|不得是jumble，?这个server|不得是jab这个serv|布料手加布", "bootstrap-servers"),
+    (r"Handau|\bHull\b", "hello"),
+    (r"B田项", "必填项"),
+    (r"字无算", "字符串"),
+    (r"材料数", "参数"),
+    (r"杠杠、", "--"),
+    (r"真相改参", "增删改查"),
+    (r"Test of Lay", "测试方法"),
+    (r"Mass在我们加发了一个内", "Math.abs"),
+    (r"JDKS7|GTA17", "JDK 17"),
+    (r"脚踪脚", "脚手架"),
+    (r"史大特", "Starter"),
+    (r"夺取事件", "读取事件"),
+    (r"横朔", "代码行数"),
+    (r"机成", "集成"),
+    (r"加法", "Java"),
+    (r"一代", "依赖"),
     (r"Torbic|托米缸|托米管|托迪克|托密|托幣格|托幣隔|托幣个|托比克|托皮克|托皮革|托皮卡|托壁壳|托壁口|托壁鸽|托壁格|托米格|托密格|托米可|托幣的|托米克|托幣|托密克|拖屁", "Topic"),
     (r"爬地形|帕地形|趴地形|Party型|体育", "Partition"),
     (r"扛凶码|扛胸码|扛凶马|扛胸", "Consumer"),
@@ -246,10 +310,11 @@ REPLACEMENTS = (
     (r"GlubID|Glub ID|固谱ID|固谱", "group id"),
     (r"卡不卡利斯等|Kafka利斯等", "KafkaListener"),
     (r"Inlayser", "Initializr"),
-    (r"热布术", "DevTools"),
-    (r"能不可|Lambook|蓝book", "Lombok"),
+    (r"热布术|热布鼠", "DevTools"),
+    (r"能不可|那里不可|Lambook|蓝book", "Lombok"),
     (r"使军母", "Streams"),
     (r"新量消费|批调消息消费", "批量消费"),
+    (r"批调", "批量"),
     (r"接力器", "监听器"),
     (r"10倍容器", "IoC 容器"),
     (r"注入掉", "注释掉"),
@@ -308,7 +373,7 @@ REPLACEMENTS = (
     (r"节的个数", "节点个数"),
     (r"RooKeyboard", "ZooKeeper"),
     (r"Lidlis", "Linux"),
-    (r"并不如下|必步下|并布下面", "bin 目录下"),
+    (r"并不如下|必步下|并布下面|并目录", "bin 目录"),
     (r"Serva", "server"),
     (r"server\.pom|serv\.pom", "server.properties"),
     (r"Payment文件", "properties 文件"),
@@ -325,6 +390,9 @@ REPLACEMENTS = (
     (r"哈漏", "hello"),
     (r"消息发生了流程|生产者发生了消息", "生产者发送消息的流程"),
     (r"蓝结器|蓝结", "拦截器"),
+    (r"蓝节器", "拦截器"),
+    (r"申请者", "生产者"),
+    (r"多余料", "多余代码"),
     (r"训练化器|训练画器|训练化|训练画", "序列化器"),
     (r"使菌", "String"),
     (r"party行", "Partition"),
@@ -335,7 +403,11 @@ REPLACEMENTS = (
     (r"paint追加", "append 追加"),
     (r"Kafka-Logers", "kafka-logs"),
     (r"LogersDNR", "log.dirs"),
-    (r"Logers", "logs"),
+    (r"Logers|Logos", "logs"),
+    (r"Notix", "NOTICE"),
+    (r"SiteDogos", "site-docs"),
+    (r"文件脚", "文件夹"),
+    (r"卸药脚本", "Shell 脚本"),
     (r"日字", "日志"),
     (r"海调", "海量"),
     (r"命令规范", "命名规范"),
@@ -369,6 +441,7 @@ REPLACEMENTS = (
     (r"CMIC|C麦克", "CMAK"),
     (r"如KEEPLE|如KEEPER|如Keeper", "ZooKeeper"),
     (r"Coref|KORUM|KORab|Korab|Korrupt|Corona", "KRaft"),
+    (r"Kamukawa有一个配置所性", "replica.lag.time.max.ms 配置项"),
     (r"抗补部路", "conf 目录"),
     (r"Application\.Component", "application.conf"),
     (r"\bVAM\b", "vim"),
@@ -445,36 +518,61 @@ def clean_text(text: str) -> str:
     # Whisper occasionally gets stuck repeating one short phrase many times.
     # Keep normal spoken repetition, but collapse three or more identical runs.
     for _ in range(3):
-        text = re.sub(r"(.{4,30}?)(?:，?\1){2,}", r"\1", text)
+        text = re.sub(r"(.{8,80}?)(?:，?\1){2,}", r"\1", text)
         text = re.sub(r"((?:[^，。！？]{2,24})[，。！？])(?:\1){2,}", r"\1", text)
+    text = re.sub(r"(^|[。！？])(?:好|那么|然后|呃|啊)[，。]\s*", r"\1", text)
+    text = re.sub(r"(?:好[，。]){2,}", "", text)
     if text and text[-1] not in "。！？；：":
         text += "。"
     return text
 
 
-def group_segments(segments: list[dict]) -> list[dict]:
-    groups: list[dict] = []
-    current: list[dict] = []
-    char_count = 0
-    for segment in segments:
-        current.append(segment)
-        char_count += len(segment["text"])
-        span = float(current[-1]["end"]) - float(current[0]["start"])
-        if char_count >= 260 or span >= 75:
-            groups.append({
-                "start": current[0]["start"],
-                "end": current[-1]["end"],
-                "text": clean_text("".join(item["text"] for item in current)),
-            })
-            current = []
-            char_count = 0
+def split_readable_paragraphs(text: str, target: int = 240, maximum: int = 360) -> list[str]:
+    """Split edited speech at sentence boundaries without dropping any content."""
+    sentences = [part for part in re.split(r"(?<=[。！？；])", text) if part]
+    paragraphs: list[str] = []
+    current = ""
+    for sentence in sentences:
+        if current and len(current) + len(sentence) > target:
+            paragraphs.append(current)
+            current = sentence
+        else:
+            current += sentence
+        while len(current) > maximum:
+            cut = max(current.rfind(mark, 0, maximum) for mark in "，；。！？")
+            if cut < 120:
+                cut = maximum
+            else:
+                cut += 1
+            paragraphs.append(current[:cut])
+            current = current[cut:]
     if current:
-        groups.append({
-            "start": current[0]["start"],
-            "end": current[-1]["end"],
-            "text": clean_text("".join(item["text"] for item in current)),
+        paragraphs.append(current)
+    return [paragraph.strip() for paragraph in paragraphs if paragraph.strip()]
+
+
+def group_segments(segments: list[dict]) -> list[dict]:
+    """Create 3–8 timestamped teaching sections and preserve source order."""
+    if not segments:
+        return []
+    duration = max(1.0, float(segments[-1]["end"]) - float(segments[0]["start"]))
+    target_count = min(8, max(3, round(duration / 75)))
+    target_count = min(target_count, len(segments))
+    groups: list[list[dict]] = [[] for _ in range(target_count)]
+    for index, segment in enumerate(segments):
+        bucket = min(target_count - 1, int(index * target_count / len(segments)))
+        groups[bucket].append(segment)
+
+    result: list[dict] = []
+    for group in groups:
+        text = clean_text("".join(item["text"] for item in group))
+        result.append({
+            "start": group[0]["start"],
+            "end": group[-1]["end"],
+            "text": text,
+            "paragraphs": split_readable_paragraphs(text),
         })
-    return groups
+    return result
 
 
 def lesson_kind(title: str) -> str:
@@ -537,6 +635,88 @@ KIND_CONTENT = {
         "pitfall": "不要把孤立 API 或配置项当成完整能力；始终把它放回生产、存储、消费或集群链路中理解。",
     },
 }
+
+
+ACTION_CONTENT = {
+    "operation": (
+        "先确认版本、目录、端口和依赖服务是否满足本节前置条件。",
+        "按老师的顺序复现安装或配置，并记录每条命令的输入与输出。",
+        "留下一份包含成功信号和失败排查过程的实验记录。",
+    ),
+    "source": (
+        "先指出表面现象对应的源码入口和关键参数。",
+        "画出入口、条件分支、默认实现与最终结果之间的调用链。",
+        "用一个最小测试验证源码阅读得到的结论。",
+    ),
+    "verification": (
+        "先写下测试输入、前置状态和预期结果。",
+        "执行测试并同时观察日志、Topic、Partition 与 Offset 变化。",
+        "留下实际结果、差异原因和重新验证的证据。",
+    ),
+    "message-flow": (
+        "先明确消息从哪里产生、写入哪个 Topic、由谁消费。",
+        "复现发送、Broker 写入和消费者处理的完整链路。",
+        "记录 Partition、Offset、序列化结果和消费端输出。",
+    ),
+    "strategy": (
+        "列出参与分配的消息、分区或消费者集合。",
+        "手算一次策略结果，再用代码或日志复现。",
+        "留下不同策略在均衡性、顺序性和重平衡成本上的对比。",
+    ),
+    "offset": (
+        "先说明当前 Offset 属于生产者、消费者组还是某个副本。",
+        "用命令或代码观察写入、提交、重启前后的数值变化。",
+        "留下 Topic、Partition、Group 与 Offset 的对应关系图。",
+    ),
+    "concept": (
+        "先用一句话说明这个概念解决的问题。",
+        "把它与 Topic、Partition、Broker、Producer 或 Consumer 的关系画出来。",
+        "用一个正常场景和一个失败场景检验自己是否真正理解。",
+    ),
+    "lesson": (
+        "先指出本节在 Kafka 完整数据链路中的位置。",
+        "跟着老师复现关键步骤，并记录输入、处理与输出。",
+        "留下可以独立复述的结论和一次验证结果。",
+    ),
+}
+
+
+def lesson_conclusion(title: str, kind: str, chapter: Chapter) -> str:
+    templates = {
+        "operation": "这节通过“{title}”完成一条可验证的操作链：先核对前置条件，再执行配置或命令，最后用日志和运行结果确认环境真正可用。",
+        "source": "这节从“{title}”的入口追到关键分支和默认实现，用源码解释表面行为，并要求最终回到测试结果验证结论。",
+        "verification": "这节围绕“{title}”做实验验证，重点不是看见一次成功，而是说清输入、预期、实际输出以及不一致时的排查顺序。",
+        "message-flow": "这节把“{title}”放回消息链路，沿 Producer、Broker、Partition、Offset 与 Consumer 追踪数据和元数据如何流动。",
+        "strategy": "这节拆解“{title}”的输入集合、计算过程和分配结果，并比较它对均衡、顺序与稳定性的影响。",
+        "offset": "这节用“{title}”区分日志位置、消费进度、副本末端和可见边界，避免把不同语境中的 Offset 混成一个数字。",
+        "concept": "这节通过“{title}”回答概念从哪里来、由什么组成、解决什么问题，以及它在 Kafka 整体架构中的位置。",
+        "lesson": "这节围绕“{title}”串起问题背景、关键对象、操作过程和验证结果，并把结论放回 Kafka 完整链路中理解。",
+    }
+    return templates[kind].format(title=title) + f"它服务于本章目标：{chapter.goal}"
+
+
+def lesson_steps(title: str, kind: str) -> tuple[str, ...]:
+    flow = KIND_CONTENT[kind]["flow"]
+    return tuple(
+        f"第 {index} 步，围绕“{title}”完成{label}。"
+        for index, label in enumerate(flow, 1)
+    )
+
+
+def explanation_heading(title: str, kind: str, index: int, count: int, text: str) -> str:
+    if index == 1:
+        return f"先明确：{title}要解决什么"
+    if index == count:
+        return "最后验证结果，并收束本节结论"
+    if any(word in text for word in ("比如", "例如", "举个例子", "案例")):
+        return "老师用例子进一步解释"
+    if any(word in text for word in ("测试", "执行", "启动", "运行", "结果", "发现")):
+        return "跟着老师操作，并观察运行结果"
+    if any(word in text for word in ("源码", "方法", "接口", "实现类", "调用")):
+        return "继续追踪实现过程和关键调用"
+    if any(word in text for word in ("区别", "对比", "但是", "如果", "否则")):
+        return "对比不同情况，明确条件和边界"
+    return f"继续拆解{KIND_CONTENT[kind]['flow'][min(index - 1, 4)]}"
 
 
 def terms_for(title: str, text: str) -> list[str]:
@@ -605,6 +785,38 @@ def transcript_markdown(item: dict, asr: dict) -> str:
     return "\n".join(lines)
 
 
+def seconds_from_clock(value: str) -> float:
+    minutes, secs = map(int, value.split(":"))
+    return float(minutes * 60 + secs)
+
+
+def load_asr(root: Path, asr_dir: Path, item: dict) -> dict:
+    """Load source ASR, falling back to the checked-in timestamp transcript."""
+    source = asr_dir / f"p{item['p']:03d}.json"
+    if source.exists():
+        return json.loads(source.read_text(encoding="utf-8"))
+
+    _, chapter_dir, base = episode_paths(root, item)
+    transcript = chapter_dir / "transcripts" / f"{base}-ASR.md"
+    segments: list[dict] = []
+    pattern = re.compile(r"^- `(\d{2}:\d{2})–(\d{2}:\d{2})` (.+)$")
+    for line in transcript.read_text(encoding="utf-8").splitlines():
+        match = pattern.match(line)
+        if not match:
+            continue
+        segments.append({
+            "start": seconds_from_clock(match.group(1)),
+            "end": seconds_from_clock(match.group(2)),
+            "text": match.group(3),
+        })
+    if not segments:
+        raise SystemExit(f"missing ASR and usable transcript for P{item['p']}")
+    return {
+        "segments": segments,
+        "text": "".join(segment["text"] for segment in segments),
+    }
+
+
 def episode_markdown(root: Path, item: dict, asr: dict, all_items: list[dict]) -> str:
     number = item["p"]
     chapter, chapter_dir, base = episode_paths(root, item)
@@ -635,37 +847,60 @@ def episode_markdown(root: Path, item: dict, asr: dict, all_items: list[dict]) -
         "",
         nav,
         "",
-        "## 这节到底讲什么",
+        "## 先看结论",
         "",
-        f"**核心主题：{item['title']}。**",
+        f"> {lesson_conclusion(item['title'], kind, chapter)}",
+        "",
+        "## 老师怎么一步步讲",
+        "",
+    ]
+    for index, step in enumerate(lesson_steps(item["title"], kind), 1):
+        lines.append(f"{index}. {step}")
+    lines.append("")
+    if number in EDITOR_NOTES:
+        lines.extend(("## 先用白话读懂", "", EDITOR_NOTES[number], ""))
+    lines.extend(("## 老师的补充说明", "",
+                  "下面按原声顺序整理老师的完整讲解脉络。保留原因、案例、对比、操作过程、边界条件和口头提醒；删除重复语气词，并把长口语拆成适合阅读的短段落。", "",
+                  "> 技术术语已经过统一校正；仍无法确认的人名或口头英文会保留原意，并通过右侧时间范围返回视频核对。", ""))
+    for index, group in enumerate(groups, 1):
+        heading = explanation_heading(item["title"], kind, index, len(groups), group["text"])
+        lines.extend((f"### {heading} · {clock(group['start'])}–{clock(group['end'])}", ""))
+        for paragraph in group["paragraphs"]:
+            lines.extend((paragraph, ""))
+        if index == 1 and number in DETAIL_CONTEXT:
+            for paragraph in DETAIL_CONTEXT[number]:
+                lines.extend((paragraph, ""))
+
+    lines.extend((
+        "## 放进整套课",
+        "",
+        f"本节属于 **{chapter.title}**。这一章要解决的是：{chapter.goal}",
         "",
         guide["intro"],
-        f"本节属于“{chapter.title}”这一章；放在全章里看，它的作用是：{chapter.goal}",
         "",
         f"![P{number} 原创概念图](./diagrams/{base}-concept.svg)",
         "",
-        "## 本节路线",
+        "### 记忆路线",
         "",
         "```mermaid",
         "flowchart LR",
-    ]
+    ))
     for index, label in enumerate(guide["flow"]):
         lines.append(f'    N{index}["{label}"]')
         if index:
             lines.append(f"    N{index - 1} --> N{index}")
-    lines.extend(("```", ""))
-    if number in EDITOR_NOTES:
-        lines.extend(("## 先用白话读懂", "", EDITOR_NOTES[number], ""))
-    lines.extend(("## 老师的完整讲解顺序（ASR 辅助复核）", "",
-                  "> 下面按时间顺序保留经过基础术语替换的 ASR，方便核对老师是否提到某个细节。",
-                  "> 人名、命令、代码和英文参数仍可能识别错误；准确结论以本节白话说明、代码块和实操速查表为准。", ""))
-    for index, group in enumerate(groups, 1):
-        lines.extend((
-            f"### {index}. {clock(group['start'])}–{clock(group['end'])}",
-            "",
-            group["text"],
-            "",
-        ))
+    lines.extend((
+        "```",
+        "",
+        "## 用在工作里",
+        "",
+        "| 项目 | 内容 |",
+        "|---|---|",
+        f"| 先回答 | {ACTION_CONTENT[kind][0]} |",
+        f"| 立刻做 | {ACTION_CONTENT[kind][1]} |",
+        f"| 留下证据 | {ACTION_CONTENT[kind][2]} |",
+        "",
+    ))
 
     if terms:
         lines.extend(("## 关键术语", ""))
@@ -684,16 +919,6 @@ def episode_markdown(root: Path, item: dict, asr: dict, all_items: list[dict]) -
         ))
 
     lines.extend((
-        "## 完整原声逐段记录",
-        "",
-        f"[查看本节带时间戳的本地 ASR](./transcripts/{base}-ASR.md)。主笔记负责可读性和术语校正；ASR 页面负责完整性复核。",
-        "",
-        "## 读完记住",
-        "",
-        f"- 本节主题是 **{item['title']}**，它服务于本章目标：{chapter.goal}",
-        f"- 理解顺序是：{' → '.join(guide['flow'])}。",
-        f"- 学习时要同时核对老师的解释、画面中的配置/代码，以及最终运行结果。",
-        "",
         "## 最容易踩的坑",
         "",
         guide["pitfall"],
@@ -709,8 +934,12 @@ def episode_markdown(root: Path, item: dict, asr: dict, all_items: list[dict]) -
         "- [ ] 我能不看视频复述本节完整思路",
         "- [ ] 我能指出关键命令、配置、类或接口的作用",
         "- [ ] 我能解释画面中的输入与输出为什么对应",
-        "- [ ] 我核对过完整 ASR，没有跳过老师的补充说明",
+        "- [ ] 我读完了老师的详细讲解正文，没有只看路线图和要点",
         "- [ ] 我完成了本节自测或复现实验",
+        "",
+        "## 需要核对原话时",
+        "",
+        f"[查看本节带时间戳的完整 ASR](./transcripts/{base}-ASR.md)。主笔记负责理解与实践；ASR 页面负责逐句完整性复核。",
         "",
     ))
     return "\n".join(lines)
@@ -847,7 +1076,13 @@ def main() -> None:
     if len(items) != 156:
         raise SystemExit(f"expected 156 catalog items, got {len(items)}")
 
-    missing = [item["p"] for item in items if not (args.asr_dir / f"p{item['p']:03d}.json").exists()]
+    missing = []
+    for item in items:
+        if (args.asr_dir / f"p{item['p']:03d}.json").exists():
+            continue
+        _, chapter_dir, base = episode_paths(root, item)
+        if not (chapter_dir / "transcripts" / f"{base}-ASR.md").exists():
+            missing.append(item["p"])
     if missing:
         raise SystemExit(f"missing ASR files: {missing[:20]}")
 
@@ -862,7 +1097,7 @@ def main() -> None:
         (chapter_dir / "README.md").write_text(chapter_readme(root, chapter, items), encoding="utf-8")
 
     for item in items:
-        asr = json.loads((args.asr_dir / f"p{item['p']:03d}.json").read_text(encoding="utf-8"))
+        asr = load_asr(root, args.asr_dir, item)
         _, chapter_dir, base = episode_paths(root, item)
         transcript_dir = chapter_dir / "transcripts"
         transcript_dir.mkdir(parents=True, exist_ok=True)

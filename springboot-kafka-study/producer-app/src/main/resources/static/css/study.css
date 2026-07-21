@@ -397,6 +397,41 @@ main { max-width: 1320px; margin: 0 auto; padding: 42px 40px 70px; }
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 .article pre code { padding: 0; background: transparent; color: inherit; }
+.article .mermaid-diagram {
+    margin: 22px 0;
+    overflow-x: auto;
+    padding: 28px 22px;
+    border: 1px solid #d6e1ef;
+    border-radius: 16px;
+    background:
+        linear-gradient(rgba(82, 120, 173, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(82, 120, 173, .055) 1px, transparent 1px),
+        #fbfdff;
+    background-size: 24px 24px;
+    text-align: center;
+}
+.article .mermaid-diagram svg {
+    display: block;
+    width: 100%;
+    min-width: 620px;
+    height: auto;
+    margin: 0 auto;
+}
+.article .mermaid-diagram[data-mermaid-state="pending"],
+.article .mermaid-diagram[data-mermaid-state="rendering"] {
+    color: var(--muted);
+    white-space: pre-wrap;
+}
+.article .mermaid-diagram[data-mermaid-state="error"] {
+    padding: 18px;
+    text-align: left;
+}
+.article .mermaid-diagram[data-mermaid-state="error"] pre { margin-bottom: 0; }
+.article .mermaid-error-title {
+    margin: 0 0 10px;
+    color: #9a5b16;
+    font-weight: 800;
+}
 .article li { margin: 5px 0; color: #3f4c5f; }
 .article hr { margin: 32px 0; border: 0; border-top: 1px solid var(--line); }
 .article-loading { padding: 80px 20px; color: var(--muted); text-align: center; }
