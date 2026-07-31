@@ -1,0 +1,1521 @@
+{
+  "title": "Kafka 从入门到 KRaft 集群",
+  "lessonCount": 156,
+  "chapterCount": 10,
+  "chapters": [
+    {
+      "id": "01-course-overview",
+      "number": 1,
+      "title": "课程概览",
+      "summary": "认识 Kafka 的定位、应用场景与发展脉络",
+      "lessonCount": 7,
+      "start": 1,
+      "end": 7,
+      "lessons": [
+        {
+          "id": "p1",
+          "number": 1,
+          "title": "课程概述",
+          "duration": "01:54",
+          "path": "01-course-overview/p001-课程概述.md",
+          "chapterId": "01-course-overview",
+          "chapterTitle": "课程概览"
+        },
+        {
+          "id": "p2",
+          "number": 2,
+          "title": "What is Kafka？",
+          "duration": "03:03",
+          "path": "01-course-overview/p002-What-is-Kafka.md",
+          "chapterId": "01-course-overview",
+          "chapterTitle": "课程概览"
+        },
+        {
+          "id": "p3",
+          "number": 3,
+          "title": "谁在使用Kafka",
+          "duration": "03:50",
+          "path": "01-course-overview/p003-谁在使用Kafka.md",
+          "chapterId": "01-course-overview",
+          "chapterTitle": "课程概览"
+        },
+        {
+          "id": "p4",
+          "number": 4,
+          "title": "Kafka的起源",
+          "duration": "04:42",
+          "path": "01-course-overview/p004-Kafka的起源.md",
+          "chapterId": "01-course-overview",
+          "chapterTitle": "课程概览"
+        },
+        {
+          "id": "p5",
+          "number": 5,
+          "title": "Kafka名字的由来",
+          "duration": "01:51",
+          "path": "01-course-overview/p005-Kafka名字的由来.md",
+          "chapterId": "01-course-overview",
+          "chapterTitle": "课程概览"
+        },
+        {
+          "id": "p6",
+          "number": 6,
+          "title": "Kafka的发展历程",
+          "duration": "03:08",
+          "path": "01-course-overview/p006-Kafka的发展历程.md",
+          "chapterId": "01-course-overview",
+          "chapterTitle": "课程概览"
+        },
+        {
+          "id": "p7",
+          "number": 7,
+          "title": "Kafka版本迭代演进",
+          "duration": "03:12",
+          "path": "01-course-overview/p007-Kafka版本迭代演进.md",
+          "chapterId": "01-course-overview",
+          "chapterTitle": "课程概览"
+        }
+      ]
+    },
+    {
+      "id": "02-environment-deployment",
+      "number": 2,
+      "title": "环境与部署",
+      "summary": "从 JDK、ZooKeeper 到 KRaft 与 Docker",
+      "lessonCount": 24,
+      "start": 8,
+      "end": 31,
+      "lessons": [
+        {
+          "id": "p8",
+          "number": 8,
+          "title": "Kafka运行环境前置要求",
+          "duration": "05:12",
+          "path": "02-environment-deployment/p008-Kafka运行环境前置要求.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p9",
+          "number": 9,
+          "title": "JDK17的下载",
+          "duration": "03:24",
+          "path": "02-environment-deployment/p009-JDK17的下载.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p10",
+          "number": 10,
+          "title": "JDK17的安装与配置",
+          "duration": "04:37",
+          "path": "02-environment-deployment/p010-JDK17的安装与配置.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p11",
+          "number": 11,
+          "title": "Kafka的下载和安装",
+          "duration": "03:58",
+          "path": "02-environment-deployment/p011-Kafka的下载和安装.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p12",
+          "number": 12,
+          "title": "Kafka环境启动的两种方式",
+          "duration": "03:38",
+          "path": "02-environment-deployment/p012-Kafka环境启动的两种方式.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p13",
+          "number": 13,
+          "title": "Kafka安装目录的介绍",
+          "duration": "02:43",
+          "path": "02-environment-deployment/p013-Kafka安装目录的介绍.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p14",
+          "number": 14,
+          "title": "Zookeeper服务器的启动",
+          "duration": "04:55",
+          "path": "02-environment-deployment/p014-Zookeeper服务器的启动.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p15",
+          "number": 15,
+          "title": "Kafka服务器的启动",
+          "duration": "04:48",
+          "path": "02-environment-deployment/p015-Kafka服务器的启动.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p16",
+          "number": 16,
+          "title": "Zookeeper和Kafka服务器的关闭",
+          "duration": "02:50",
+          "path": "02-environment-deployment/p016-Zookeeper和Kafka服务器的关闭.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p17",
+          "number": 17,
+          "title": "Zookeeper服务器的下载",
+          "duration": "03:56",
+          "path": "02-environment-deployment/p017-Zookeeper服务器的下载.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p18",
+          "number": 18,
+          "title": "Zookeeper服务器的安装",
+          "duration": "03:48",
+          "path": "02-environment-deployment/p018-Zookeeper服务器的安装.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p19",
+          "number": 19,
+          "title": "Zookeeper服务器的配置",
+          "duration": "02:50",
+          "path": "02-environment-deployment/p019-Zookeeper服务器的配置.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p20",
+          "number": 20,
+          "title": "Zookeeper服务器的启动",
+          "duration": "03:44",
+          "path": "02-environment-deployment/p020-Zookeeper服务器的启动.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p21",
+          "number": 21,
+          "title": "Zookeeper服务器与Tomcat端口冲突处理",
+          "duration": "06:53",
+          "path": "02-environment-deployment/p021-Zookeeper服务器与Tomcat端口冲突处理.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p22",
+          "number": 22,
+          "title": "使用独立的Zookeeper启动Kafka",
+          "duration": "04:47",
+          "path": "02-environment-deployment/p022-使用独立的Zookeeper启动Kafka.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p23",
+          "number": 23,
+          "title": "Kafka启动使用KRaft生成Cluster UUID",
+          "duration": "05:20",
+          "path": "02-environment-deployment/p023-Kafka启动使用KRaft生成Cluster-UUID.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p24",
+          "number": 24,
+          "title": "kafka-storage.sh脚本参数解读",
+          "duration": "05:54",
+          "path": "02-environment-deployment/p024-kafka-storage.sh脚本参数解读.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p25",
+          "number": 25,
+          "title": "Kafka启动使用KRaft",
+          "duration": "08:31",
+          "path": "02-environment-deployment/p025-Kafka启动使用KRaft.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p26",
+          "number": 26,
+          "title": "自定义Cluster UUID启动Kafka",
+          "duration": "08:04",
+          "path": "02-environment-deployment/p026-自定义Cluster-UUID启动Kafka.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p27",
+          "number": 27,
+          "title": "Docker的卸载和安装",
+          "duration": "04:50",
+          "path": "02-environment-deployment/p027-Docker的卸载和安装.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p28",
+          "number": 28,
+          "title": "Docker的卸载和安装",
+          "duration": "06:44",
+          "path": "02-environment-deployment/p028-Docker的卸载和安装.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p29",
+          "number": 29,
+          "title": "Docker引擎启动与关闭",
+          "duration": "07:06",
+          "path": "02-environment-deployment/p029-Docker引擎启动与关闭.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p30",
+          "number": 30,
+          "title": "拉取Kafka的Docker镜像",
+          "duration": "05:16",
+          "path": "02-environment-deployment/p030-拉取Kafka的Docker镜像.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        },
+        {
+          "id": "p31",
+          "number": 31,
+          "title": "启动Kafka的Docker容器",
+          "duration": "03:48",
+          "path": "02-environment-deployment/p031-启动Kafka的Docker容器.md",
+          "chapterId": "02-environment-deployment",
+          "chapterTitle": "环境与部署"
+        }
+      ]
+    },
+    {
+      "id": "03-topic-event-cli",
+      "number": 3,
+      "title": "Topic 与命令行",
+      "summary": "用命令行创建主题并完成第一轮收发",
+      "lessonCount": 12,
+      "start": 32,
+      "end": 43,
+      "lessons": [
+        {
+          "id": "p32",
+          "number": 32,
+          "title": "Kafka的主题Topic和事件Event",
+          "duration": "02:42",
+          "path": "03-topic-event-cli/p032-Kafka的主题Topic和事件Event.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p33",
+          "number": 33,
+          "title": "通过脚本工具创建主题Topic",
+          "duration": "06:53",
+          "path": "03-topic-event-cli/p033-通过脚本工具创建主题Topic.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p34",
+          "number": 34,
+          "title": "kafka-topics.sh脚本工具的使用",
+          "duration": "06:42",
+          "path": "03-topic-event-cli/p034-kafka-topics.sh脚本工具的使用.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p35",
+          "number": 35,
+          "title": "在主题Topic中写入一些事件Events",
+          "duration": "09:05",
+          "path": "03-topic-event-cli/p035-在主题Topic中写入一些事件Events.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p36",
+          "number": 36,
+          "title": "从主题Topic中读取事件Events",
+          "duration": "05:21",
+          "path": "03-topic-event-cli/p036-从主题Topic中读取事件Events.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p37",
+          "number": 37,
+          "title": "从主题Topic中读取事件Events",
+          "duration": "05:44",
+          "path": "03-topic-event-cli/p037-从主题Topic中读取事件Events.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p38",
+          "number": 38,
+          "title": "外部环境连接Kafka",
+          "duration": "06:15",
+          "path": "03-topic-event-cli/p038-外部环境连接Kafka.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p39",
+          "number": 39,
+          "title": "外部环境连不上Kafka？",
+          "duration": "07:18",
+          "path": "03-topic-event-cli/p039-外部环境连不上Kafka.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p40",
+          "number": 40,
+          "title": "Docker容器Kafka配置文件",
+          "duration": "05:01",
+          "path": "03-topic-event-cli/p040-Docker容器Kafka配置文件.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p41",
+          "number": 41,
+          "title": "Docker容器Kafka配置文件复制到Linux",
+          "duration": "05:07",
+          "path": "03-topic-event-cli/p041-Docker容器Kafka配置文件复制到Linux.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p42",
+          "number": 42,
+          "title": "Docker容器Kafka配置文件修改",
+          "duration": "06:43",
+          "path": "03-topic-event-cli/p042-Docker容器Kafka配置文件修改.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        },
+        {
+          "id": "p43",
+          "number": 43,
+          "title": "Docker容器Kafka配置文件映射",
+          "duration": "03:51",
+          "path": "03-topic-event-cli/p043-Docker容器Kafka配置文件映射.md",
+          "chapterId": "03-topic-event-cli",
+          "chapterTitle": "Topic 与命令行"
+        }
+      ]
+    },
+    {
+      "id": "04-tools-monitoring",
+      "number": 4,
+      "title": "工具与监控",
+      "summary": "连接、查看和管理 Kafka 的常用工具",
+      "lessonCount": 8,
+      "start": 44,
+      "end": 51,
+      "lessons": [
+        {
+          "id": "p44",
+          "number": 44,
+          "title": "Idea之Kafka插件工具",
+          "duration": "04:02",
+          "path": "04-tools-monitoring/p044-Idea之Kafka插件工具.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        },
+        {
+          "id": "p45",
+          "number": 45,
+          "title": "Kafka连接工具Offset Explorer",
+          "duration": "06:50",
+          "path": "04-tools-monitoring/p045-Kafka连接工具Offset-Explorer.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        },
+        {
+          "id": "p46",
+          "number": 46,
+          "title": "Kafka连接工具CMAK",
+          "duration": "06:43",
+          "path": "04-tools-monitoring/p046-Kafka连接工具CMAK.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        },
+        {
+          "id": "p47",
+          "number": 47,
+          "title": "Kafka连接工具CMAK配置与启动",
+          "duration": "08:30",
+          "path": "04-tools-monitoring/p047-Kafka连接工具CMAK配置与启动.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        },
+        {
+          "id": "p48",
+          "number": 48,
+          "title": "Kafka连接工具CMAK使用限制",
+          "duration": "08:16",
+          "path": "04-tools-monitoring/p048-Kafka连接工具CMAK使用限制.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        },
+        {
+          "id": "p49",
+          "number": 49,
+          "title": "Kafka监控工具EFAK",
+          "duration": "08:57",
+          "path": "04-tools-monitoring/p049-Kafka监控工具EFAK.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        },
+        {
+          "id": "p50",
+          "number": 50,
+          "title": "Kafka监控工具EFAK配置",
+          "duration": "10:26",
+          "path": "04-tools-monitoring/p050-Kafka监控工具EFAK配置.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        },
+        {
+          "id": "p51",
+          "number": 51,
+          "title": "Kafka监控工具EFAK部署运行",
+          "duration": "09:57",
+          "path": "04-tools-monitoring/p051-Kafka监控工具EFAK部署运行.md",
+          "chapterId": "04-tools-monitoring",
+          "chapterTitle": "工具与监控"
+        }
+      ]
+    },
+    {
+      "id": "05-spring-boot-basics",
+      "number": 5,
+      "title": "Spring Boot 基础",
+      "summary": "KafkaTemplate、监听消费、Offset 与序列化",
+      "lessonCount": 22,
+      "start": 52,
+      "end": 73,
+      "lessons": [
+        {
+          "id": "p52",
+          "number": 52,
+          "title": "Spring Boot集成Kafka开发",
+          "duration": "06:50",
+          "path": "05-spring-boot-basics/p052-Spring-Boot集成Kafka开发.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p53",
+          "number": 53,
+          "title": "Spring Boot集成Kafka开发配置",
+          "duration": "08:48",
+          "path": "05-spring-boot-basics/p053-Spring-Boot集成Kafka开发配置.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p54",
+          "number": 54,
+          "title": "Spring Boot集成Kafka事件Event发送",
+          "duration": "05:28",
+          "path": "05-spring-boot-basics/p054-Spring-Boot集成Kafka事件Event发送.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p55",
+          "number": 55,
+          "title": "Spring Boot集成Kafka事件Event发送测试",
+          "duration": "09:15",
+          "path": "05-spring-boot-basics/p055-Spring-Boot集成Kafka事件Event发送测试.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p56",
+          "number": 56,
+          "title": "Spring Boot集成Kafka事件Event读取",
+          "duration": "08:36",
+          "path": "05-spring-boot-basics/p056-Spring-Boot集成Kafka事件Event读取.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p57",
+          "number": 57,
+          "title": "Kafka的几个概念快速梳理",
+          "duration": "06:40",
+          "path": "05-spring-boot-basics/p057-Kafka的几个概念快速梳理.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p58",
+          "number": 58,
+          "title": "SpringBoot集成Kafka读取最早的消息",
+          "duration": "04:16",
+          "path": "05-spring-boot-basics/p058-SpringBoot集成Kafka读取最早的消息.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p59",
+          "number": 59,
+          "title": "SpringBoot集成Kafka读取最早的消息",
+          "duration": "06:00",
+          "path": "05-spring-boot-basics/p059-SpringBoot集成Kafka读取最早的消息.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p60",
+          "number": 60,
+          "title": "手动重置Kafka偏移量offset",
+          "duration": "07:25",
+          "path": "05-spring-boot-basics/p060-手动重置Kafka偏移量offset.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p61",
+          "number": 61,
+          "title": "消息消费时偏移量策略的配置",
+          "duration": "10:10",
+          "path": "05-spring-boot-basics/p061-消息消费时偏移量策略的配置.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p62",
+          "number": 62,
+          "title": "Spring Boot集成Kafka发送Message对象消息",
+          "duration": "07:42",
+          "path": "05-spring-boot-basics/p062-Spring-Boot集成Kafka发送Message对象消息.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p63",
+          "number": 63,
+          "title": "Spring Boot集成Kafka发送ProducerRecord对象消息",
+          "duration": "12:00",
+          "path": "05-spring-boot-basics/p063-Spring-Boot集成Kafka发送ProducerRecord对象消息.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p64",
+          "number": 64,
+          "title": "Spring Boot集成Kafka发送指定分区的消息",
+          "duration": "04:14",
+          "path": "05-spring-boot-basics/p064-Spring-Boot集成Kafka发送指定分区的消息.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p65",
+          "number": 65,
+          "title": "Spring Boot集成Kafka发送默认topic消息",
+          "duration": "07:21",
+          "path": "05-spring-boot-basics/p065-Spring-Boot集成Kafka发送默认topic消息.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p66",
+          "number": 66,
+          "title": "kafkaTemplate.send()和kafkaTemplate.sendDefault()的比较",
+          "duration": "03:14",
+          "path": "05-spring-boot-basics/p066-kafkaTemplate.send-和kafkaTemplate.sendDefault-的比较.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p67",
+          "number": 67,
+          "title": "获取生产者消息发送结果",
+          "duration": "04:42",
+          "path": "05-spring-boot-basics/p067-获取生产者消息发送结果.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p68",
+          "number": 68,
+          "title": "阻塞式获取生产者消息发送的结果",
+          "duration": "11:18",
+          "path": "05-spring-boot-basics/p068-阻塞式获取生产者消息发送的结果.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p69",
+          "number": 69,
+          "title": "非阻塞式获取生产者消息发送的结果",
+          "duration": "10:52",
+          "path": "05-spring-boot-basics/p069-非阻塞式获取生产者消息发送的结果.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p70",
+          "number": 70,
+          "title": "SpringBoot集成Kafka开发发送对象消息",
+          "duration": "05:20",
+          "path": "05-spring-boot-basics/p070-SpringBoot集成Kafka开发发送对象消息.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p71",
+          "number": 71,
+          "title": "SpringBoot集成Kafka自动装配的KafkaTemplate",
+          "duration": "04:06",
+          "path": "05-spring-boot-basics/p071-SpringBoot集成Kafka自动装配的KafkaTemplate.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p72",
+          "number": 72,
+          "title": "SpringBoot集成Kafka开发发送对象消息序列化",
+          "duration": "09:39",
+          "path": "05-spring-boot-basics/p072-SpringBoot集成Kafka开发发送对象消息序列化.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        },
+        {
+          "id": "p73",
+          "number": 73,
+          "title": "SpringBoot集成Kafka开发发送消息的KafkaTemplate注入",
+          "duration": "02:39",
+          "path": "05-spring-boot-basics/p073-SpringBoot集成Kafka开发发送消息的KafkaTemplate注入.md",
+          "chapterId": "05-spring-boot-basics",
+          "chapterTitle": "Spring Boot 基础"
+        }
+      ]
+    },
+    {
+      "id": "06-producer-internals",
+      "number": 6,
+      "title": "生产者原理",
+      "summary": "分区策略、拦截器与完整发送流程",
+      "lessonCount": 15,
+      "start": 74,
+      "end": 88,
+      "lessons": [
+        {
+          "id": "p74",
+          "number": 74,
+          "title": "Kafka的核心概念Replica副本",
+          "duration": "05:25",
+          "path": "06-producer-internals/p074-Kafka的核心概念Replica副本.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p75",
+          "number": 75,
+          "title": "Kafka命令行脚本创建topic并指定分区和副本",
+          "duration": "09:22",
+          "path": "06-producer-internals/p075-Kafka命令行脚本创建topic并指定分区和副本.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p76",
+          "number": 76,
+          "title": "SpringBoot集成Kafka创建topic并指定分区和副本",
+          "duration": "08:29",
+          "path": "06-producer-internals/p076-SpringBoot集成Kafka创建topic并指定分区和副本.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p77",
+          "number": 77,
+          "title": "SpringBoot集成Kafka创建topic并指定分区和副本",
+          "duration": "07:44",
+          "path": "06-producer-internals/p077-SpringBoot集成Kafka创建topic并指定分区和副本.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p78",
+          "number": 78,
+          "title": "生产者发送消息的分区策略测试",
+          "duration": "04:09",
+          "path": "06-producer-internals/p078-生产者发送消息的分区策略测试.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p79",
+          "number": 79,
+          "title": "生产者发送消息的分区策略源码分析",
+          "duration": "09:33",
+          "path": "06-producer-internals/p079-生产者发送消息的分区策略源码分析.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p80",
+          "number": 80,
+          "title": "生产者发送消息的分区策略源码分析",
+          "duration": "10:59",
+          "path": "06-producer-internals/p080-生产者发送消息的分区策略源码分析.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p81",
+          "number": 81,
+          "title": "生产者发送消息的分区策略源RoundRobinPartitioner",
+          "duration": "04:30",
+          "path": "06-producer-internals/p081-生产者发送消息的分区策略源RoundRobinPartitioner.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p82",
+          "number": 82,
+          "title": "生产者发送消息配置分区策略RoundRobinPartitioner",
+          "duration": "08:32",
+          "path": "06-producer-internals/p082-生产者发送消息配置分区策略RoundRobinPartitioner.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p83",
+          "number": 83,
+          "title": "生产者发送消息配置分区策略RoundRobinPartitioner测试",
+          "duration": "07:50",
+          "path": "06-producer-internals/p083-生产者发送消息配置分区策略RoundRobinPartitioner测试.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p84",
+          "number": 84,
+          "title": "生产者发送消息自定义分区策略",
+          "duration": "06:52",
+          "path": "06-producer-internals/p084-生产者发送消息自定义分区策略.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p85",
+          "number": 85,
+          "title": "生产者发送消息自定义分区策略",
+          "duration": "04:57",
+          "path": "06-producer-internals/p085-生产者发送消息自定义分区策略.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p86",
+          "number": 86,
+          "title": "Kafka生产者发送消息的流程",
+          "duration": "05:44",
+          "path": "06-producer-internals/p086-Kafka生产者发送消息的流程.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p87",
+          "number": 87,
+          "title": "Kafka自定义消息发送的拦截器",
+          "duration": "07:00",
+          "path": "06-producer-internals/p087-Kafka自定义消息发送的拦截器.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        },
+        {
+          "id": "p88",
+          "number": 88,
+          "title": "Kafka自定义消息发送的拦截器测试",
+          "duration": "05:21",
+          "path": "06-producer-internals/p088-Kafka自定义消息发送的拦截器测试.md",
+          "chapterId": "06-producer-internals",
+          "chapterTitle": "生产者原理"
+        }
+      ]
+    },
+    {
+      "id": "07-consumer-internals",
+      "number": 7,
+      "title": "消费者原理",
+      "summary": "监听器、确认、转发、拦截器与分配策略",
+      "lessonCount": 30,
+      "start": 89,
+      "end": 118,
+      "lessons": [
+        {
+          "id": "p89",
+          "number": 89,
+          "title": "SpringBoot集成Kafka开发接收消息体内容",
+          "duration": "09:16",
+          "path": "07-consumer-internals/p089-SpringBoot集成Kafka开发接收消息体内容.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p90",
+          "number": 90,
+          "title": "SpringBoot集成Kafka开发接收消息头内容",
+          "duration": "05:55",
+          "path": "07-consumer-internals/p090-SpringBoot集成Kafka开发接收消息头内容.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p91",
+          "number": 91,
+          "title": "SpringBoot集成Kafka开发接收消息所有内容",
+          "duration": "05:01",
+          "path": "07-consumer-internals/p091-SpringBoot集成Kafka开发接收消息所有内容.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p92",
+          "number": 92,
+          "title": "SpringBoot集成Kafka开发接收对象消息",
+          "duration": "07:58",
+          "path": "07-consumer-internals/p092-SpringBoot集成Kafka开发接收对象消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p93",
+          "number": 93,
+          "title": "SpringBoot集成Kafka开发接收对象消息",
+          "duration": "04:14",
+          "path": "07-consumer-internals/p093-SpringBoot集成Kafka开发接收对象消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p94",
+          "number": 94,
+          "title": "SpringBoot集成Kafka开发接收对象消息",
+          "duration": "07:14",
+          "path": "07-consumer-internals/p094-SpringBoot集成Kafka开发接收对象消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p95",
+          "number": 95,
+          "title": "SpringBoot集成Kafka开发接收消息监听器注解",
+          "duration": "04:18",
+          "path": "07-consumer-internals/p095-SpringBoot集成Kafka开发接收消息监听器注解.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p96",
+          "number": 96,
+          "title": "SpringBoot集成Kafka开发接收消息监听器手动确认消息",
+          "duration": "07:00",
+          "path": "07-consumer-internals/p096-SpringBoot集成Kafka开发接收消息监听器手动确认消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p97",
+          "number": 97,
+          "title": "SpringBoot集成Kafka开发接收消息监听器手动确认消息",
+          "duration": "07:25",
+          "path": "07-consumer-internals/p097-SpringBoot集成Kafka开发接收消息监听器手动确认消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p98",
+          "number": 98,
+          "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息",
+          "duration": "05:06",
+          "path": "07-consumer-internals/p098-SpringBoot集成Kafka开发指定topic-partition-offset消费消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p99",
+          "number": 99,
+          "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息",
+          "duration": "06:32",
+          "path": "07-consumer-internals/p099-SpringBoot集成Kafka开发指定topic-partition-offset消费消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p100",
+          "number": 100,
+          "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息",
+          "duration": "07:22",
+          "path": "07-consumer-internals/p100-SpringBoot集成Kafka开发指定topic-partition-offset消费消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p101",
+          "number": 101,
+          "title": "SpringBoot集成Kafka开发指定topic-partition-offset消费消息",
+          "duration": "07:12",
+          "path": "07-consumer-internals/p101-SpringBoot集成Kafka开发指定topic-partition-offset消费消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p102",
+          "number": 102,
+          "title": "SpringBoot集成Kafka开发批量消费消息",
+          "duration": "05:31",
+          "path": "07-consumer-internals/p102-SpringBoot集成Kafka开发批量消费消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p103",
+          "number": 103,
+          "title": "SpringBoot集成Kafka开发批量消费消息",
+          "duration": "04:07",
+          "path": "07-consumer-internals/p103-SpringBoot集成Kafka开发批量消费消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p104",
+          "number": 104,
+          "title": "SpringBoot集成Kafka开发批量消费消息",
+          "duration": "05:01",
+          "path": "07-consumer-internals/p104-SpringBoot集成Kafka开发批量消费消息.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p105",
+          "number": 105,
+          "title": "SpringBoot集成Kafka开发消费消息拦截器-定义ConsumerInterceptor",
+          "duration": "08:07",
+          "path": "07-consumer-internals/p105-SpringBoot集成Kafka开发消费消息拦截器-定义ConsumerInterceptor.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p106",
+          "number": 106,
+          "title": "SpringBoot集成Kafka开发消费消息拦截器-配置ConsumerFactory",
+          "duration": "08:17",
+          "path": "07-consumer-internals/p106-SpringBoot集成Kafka开发消费消息拦截器-配置ConsumerFactory.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p107",
+          "number": 107,
+          "title": "SpringBoot集成Kafka开发消费消息拦截器-ConsumerFactory",
+          "duration": "05:49",
+          "path": "07-consumer-internals/p107-SpringBoot集成Kafka开发消费消息拦截器-ConsumerFactory.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p108",
+          "number": 108,
+          "title": "SpringBoot集成Kafka开发消费消息拦截器-KafkaListenerContainerFactory",
+          "duration": "12:09",
+          "path": "07-consumer-internals/p108-SpringBoot集成Kafka开发消费消息拦截器-KafkaListenerContainerFactory.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p109",
+          "number": 109,
+          "title": "SpringBoot集成Kafka开发消费消息拦截器-消费者准备",
+          "duration": "01:12",
+          "path": "07-consumer-internals/p109-SpringBoot集成Kafka开发消费消息拦截器-消费者准备.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p110",
+          "number": 110,
+          "title": "SpringBoot集成Kafka开发消费消息拦截器-测试验证",
+          "duration": "06:12",
+          "path": "07-consumer-internals/p110-SpringBoot集成Kafka开发消费消息拦截器-测试验证.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p111",
+          "number": 111,
+          "title": "SpringBoot集成Kafka开发消息转发",
+          "duration": "08:17",
+          "path": "07-consumer-internals/p111-SpringBoot集成Kafka开发消息转发.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p112",
+          "number": 112,
+          "title": "Kafka消息消费时的分区策略接口及实现类",
+          "duration": "05:45",
+          "path": "07-consumer-internals/p112-Kafka消息消费时的分区策略接口及实现类.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p113",
+          "number": 113,
+          "title": "Kafka消息消费时的默认分区策略实现RangeAssignor",
+          "duration": "06:10",
+          "path": "07-consumer-internals/p113-Kafka消息消费时的默认分区策略实现RangeAssignor.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p114",
+          "number": 114,
+          "title": "Kafka消息消费时的默认分区策略RangeAssignor具体分配方式",
+          "duration": "04:58",
+          "path": "07-consumer-internals/p114-Kafka消息消费时的默认分区策略RangeAssignor具体分配方式.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p115",
+          "number": 115,
+          "title": "Kafka消息消费时的默认分区策略RangeAssignor代码测试验证",
+          "duration": "10:54",
+          "path": "07-consumer-internals/p115-Kafka消息消费时的默认分区策略RangeAssignor代码测试验证.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p116",
+          "number": 116,
+          "title": "Kafka消息消费时的分区策略RoundRobinAssignor",
+          "duration": "07:55",
+          "path": "07-consumer-internals/p116-Kafka消息消费时的分区策略RoundRobinAssignor.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p117",
+          "number": 117,
+          "title": "Kafka消息消费时的分区策略RoundRobinAssignor代码测试验证",
+          "duration": "09:27",
+          "path": "07-consumer-internals/p117-Kafka消息消费时的分区策略RoundRobinAssignor代码测试验证.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        },
+        {
+          "id": "p118",
+          "number": 118,
+          "title": "Kafka消息消费时的分区策略StickyAssignor和CooperativeStickyAssignor",
+          "duration": "07:39",
+          "path": "07-consumer-internals/p118-Kafka消息消费时的分区策略StickyAssignor和CooperativeStickyAssignor.md",
+          "chapterId": "07-consumer-internals",
+          "chapterTitle": "消费者原理"
+        }
+      ]
+    },
+    {
+      "id": "08-storage-offsets",
+      "number": 8,
+      "title": "存储与 Offset",
+      "summary": "日志存储、消费进度、LEO 与 Lag",
+      "lessonCount": 9,
+      "start": 119,
+      "end": 127,
+      "lessons": [
+        {
+          "id": "p119",
+          "number": 119,
+          "title": "Kafka事件消息数据的存储",
+          "duration": "10:07",
+          "path": "08-storage-offsets/p119-Kafka事件消息数据的存储.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p120",
+          "number": 120,
+          "title": "Kafka的__consumer_offsets主题",
+          "duration": "05:49",
+          "path": "08-storage-offsets/p120-Kafka的__consumer_offsets主题.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p121",
+          "number": 121,
+          "title": "Kafka的__consumer_offsets主题数据查看",
+          "duration": "05:34",
+          "path": "08-storage-offsets/p121-Kafka的__consumer_offsets主题数据查看.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p122",
+          "number": 122,
+          "title": "Kafka的Offset详解-生产者Offset",
+          "duration": "02:50",
+          "path": "08-storage-offsets/p122-Kafka的Offset详解-生产者Offset.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p123",
+          "number": 123,
+          "title": "Kafka的Offset详解-消费者Offset",
+          "duration": "06:51",
+          "path": "08-storage-offsets/p123-Kafka的Offset详解-消费者Offset.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p124",
+          "number": 124,
+          "title": "Kafka的Offset详解-生产者Offset代码演示",
+          "duration": "05:26",
+          "path": "08-storage-offsets/p124-Kafka的Offset详解-生产者Offset代码演示.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p125",
+          "number": 125,
+          "title": "Kafka的Offset详解-消费者Offset代码演示默认从最新位置消费",
+          "duration": "11:16",
+          "path": "08-storage-offsets/p125-Kafka的Offset详解-消费者Offset代码演示默认从最新位置消费.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p126",
+          "number": 126,
+          "title": "Kafka的Offset详解-消费者Offset代码演示默认从最新位置消费",
+          "duration": "06:28",
+          "path": "08-storage-offsets/p126-Kafka的Offset详解-消费者Offset代码演示默认从最新位置消费.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        },
+        {
+          "id": "p127",
+          "number": 127,
+          "title": "Kafka的Offset详解-消费者Offset代码演示总结",
+          "duration": "07:33",
+          "path": "08-storage-offsets/p127-Kafka的Offset详解-消费者Offset代码演示总结.md",
+          "chapterId": "08-storage-offsets",
+          "chapterTitle": "存储与 Offset"
+        }
+      ]
+    },
+    {
+      "id": "09-cluster-replication",
+      "number": 9,
+      "title": "集群与副本",
+      "summary": "多 Broker、副本、ISR、HW 与容错",
+      "lessonCount": 20,
+      "start": 128,
+      "end": 147,
+      "lessons": [
+        {
+          "id": "p128",
+          "number": 128,
+          "title": "Kafka集群的搭建-整体介绍",
+          "duration": "03:01",
+          "path": "09-cluster-replication/p128-Kafka集群的搭建-整体介绍.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p129",
+          "number": 129,
+          "title": "Kafka集群的搭建-准备3个Kafka",
+          "duration": "03:37",
+          "path": "09-cluster-replication/p129-Kafka集群的搭建-准备3个Kafka.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p130",
+          "number": 130,
+          "title": "Kafka集群的搭建-配置文件",
+          "duration": "06:27",
+          "path": "09-cluster-replication/p130-Kafka集群的搭建-配置文件.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p131",
+          "number": 131,
+          "title": "Kafka集群的搭建-3台配置文件",
+          "duration": "05:43",
+          "path": "09-cluster-replication/p131-Kafka集群的搭建-3台配置文件.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p132",
+          "number": 132,
+          "title": "Kafka集群的测试-运行Zookeeper",
+          "duration": "05:47",
+          "path": "09-cluster-replication/p132-Kafka集群的测试-运行Zookeeper.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p133",
+          "number": 133,
+          "title": "Kafka集群的测试-运行3台Kafka",
+          "duration": "04:29",
+          "path": "09-cluster-replication/p133-Kafka集群的测试-运行3台Kafka.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p134",
+          "number": 134,
+          "title": "Kafka集群的测试-SpringBoot连接集群Kafka",
+          "duration": "06:36",
+          "path": "09-cluster-replication/p134-Kafka集群的测试-SpringBoot连接集群Kafka.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p135",
+          "number": 135,
+          "title": "Kafka集群的测试-SpringBoot连接集群Kafka收发消息",
+          "duration": "05:42",
+          "path": "09-cluster-replication/p135-Kafka集群的测试-SpringBoot连接集群Kafka收发消息.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p136",
+          "number": 136,
+          "title": "Kafka的集群架构分析",
+          "duration": "04:19",
+          "path": "09-cluster-replication/p136-Kafka的集群架构分析.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p137",
+          "number": 137,
+          "title": "Kafka的集群架构分区和副本机制",
+          "duration": "03:28",
+          "path": "09-cluster-replication/p137-Kafka的集群架构分区和副本机制.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p138",
+          "number": 138,
+          "title": "Kafka的集群架构分区和多副本机制分析",
+          "duration": "02:40",
+          "path": "09-cluster-replication/p138-Kafka的集群架构分区和多副本机制分析.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p139",
+          "number": 139,
+          "title": "Kafka的集群架构分区和多副本机制分析",
+          "duration": "04:17",
+          "path": "09-cluster-replication/p139-Kafka的集群架构分区和多副本机制分析.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p140",
+          "number": 140,
+          "title": "Kafka的集群架构分区和多副本机制分析",
+          "duration": "05:57",
+          "path": "09-cluster-replication/p140-Kafka的集群架构分区和多副本机制分析.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p141",
+          "number": 141,
+          "title": "Kafka集群架构的多副本架构",
+          "duration": "08:37",
+          "path": "09-cluster-replication/p141-Kafka集群架构的多副本架构.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p142",
+          "number": 142,
+          "title": "Kafka中的12个核心概念梳理",
+          "duration": "02:50",
+          "path": "09-cluster-replication/p142-Kafka中的12个核心概念梳理.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p143",
+          "number": 143,
+          "title": "Kafka中的12个核心概念-ISR副本",
+          "duration": "03:06",
+          "path": "09-cluster-replication/p143-Kafka中的12个核心概念-ISR副本.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p144",
+          "number": 144,
+          "title": "Kafka中的12个核心概念-ISR副本",
+          "duration": "05:32",
+          "path": "09-cluster-replication/p144-Kafka中的12个核心概念-ISR副本.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p145",
+          "number": 145,
+          "title": "Kafka中的12个核心概念-LEO",
+          "duration": "01:48",
+          "path": "09-cluster-replication/p145-Kafka中的12个核心概念-LEO.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p146",
+          "number": 146,
+          "title": "Kafka中的12个核心概念-HW",
+          "duration": "04:10",
+          "path": "09-cluster-replication/p146-Kafka中的12个核心概念-HW.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        },
+        {
+          "id": "p147",
+          "number": 147,
+          "title": "Kafka中ISR、HW、LEO的关系",
+          "duration": "03:19",
+          "path": "09-cluster-replication/p147-Kafka中ISR、HW、LEO的关系.md",
+          "chapterId": "09-cluster-replication",
+          "chapterTitle": "集群与副本"
+        }
+      ]
+    },
+    {
+      "id": "10-kraft-cluster",
+      "number": 10,
+      "title": "KRaft 集群",
+      "summary": "规划、配置并验证三节点 KRaft 集群",
+      "lessonCount": 9,
+      "start": 148,
+      "end": 156,
+      "lessons": [
+        {
+          "id": "p148",
+          "number": 148,
+          "title": "Kafka基于KRaft方式集群架构分析",
+          "duration": "04:07",
+          "path": "10-kraft-cluster/p148-Kafka基于KRaft方式集群架构分析.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p149",
+          "number": 149,
+          "title": "Kafka基于KRaft方式集群架构分析",
+          "duration": "04:52",
+          "path": "10-kraft-cluster/p149-Kafka基于KRaft方式集群架构分析.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p150",
+          "number": 150,
+          "title": "Kafka基于KRaft方式集群服务器规划",
+          "duration": "04:08",
+          "path": "10-kraft-cluster/p150-Kafka基于KRaft方式集群服务器规划.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p151",
+          "number": 151,
+          "title": "Kafka基于KRaft方式集群准备Broker服务器",
+          "duration": "02:57",
+          "path": "10-kraft-cluster/p151-Kafka基于KRaft方式集群准备Broker服务器.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p152",
+          "number": 152,
+          "title": "Kafka基于KRaft方式集群配置Broker服务器",
+          "duration": "06:39",
+          "path": "10-kraft-cluster/p152-Kafka基于KRaft方式集群配置Broker服务器.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p153",
+          "number": 153,
+          "title": "Kafka基于KRaft方式集群配置Broker服务器",
+          "duration": "07:16",
+          "path": "10-kraft-cluster/p153-Kafka基于KRaft方式集群配置Broker服务器.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p154",
+          "number": 154,
+          "title": "Kafka基于KRaft方式集群启动Broker服务器",
+          "duration": "08:25",
+          "path": "10-kraft-cluster/p154-Kafka基于KRaft方式集群启动Broker服务器.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p155",
+          "number": 155,
+          "title": "Kafka基于KRaft方式集群测试",
+          "duration": "06:45",
+          "path": "10-kraft-cluster/p155-Kafka基于KRaft方式集群测试.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        },
+        {
+          "id": "p156",
+          "number": 156,
+          "title": "Kafka基于KRaft方式集群测试与总结",
+          "duration": "03:19",
+          "path": "10-kraft-cluster/p156-Kafka基于KRaft方式集群测试与总结.md",
+          "chapterId": "10-kraft-cluster",
+          "chapterTitle": "KRaft 集群"
+        }
+      ]
+    }
+  ]
+}

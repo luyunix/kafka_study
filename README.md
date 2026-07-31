@@ -5,6 +5,7 @@
 都按“输入—操作—输出—排错”组织。
 
 - 原课程：[BV14J4m187jz](https://www.bilibili.com/video/BV14J4m187jz)
+- 在线学习站：[GitHub Pages](https://luyunix.github.io/kafka_study/)
 - 选集数量：156 节
 - 总时长：15.68 小时
 - 课程版本：Kafka 3.7.0、JDK 17，覆盖 ZooKeeper 与 KRaft
