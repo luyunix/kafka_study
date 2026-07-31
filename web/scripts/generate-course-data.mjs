@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, copyFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -274,9 +274,66 @@ for (const lesson of lessons) {
   );
 }
 
+const publicNotesRoot = path.join(webRoot, "public", "notes");
+await rm(publicNotesRoot, { recursive: true, force: true });
+await cp(notesRoot, publicNotesRoot, { recursive: true });
+
+const readerTopics = catalog.chapters.map((chapter) => ({
+  slug: chapter.id,
+  title: chapter.title,
+  description: chapter.summary,
+  count: chapter.lessonCount,
+  lessons: chapter.lessons.map((catalogLesson, topicIndex) => {
+    const generated = lessons.find((item) => item.number === catalogLesson.number);
+    return {
+      id: catalogLesson.number,
+      topic: chapter.id,
+      topicTitle: chapter.title,
+      topicIndex: topicIndex + 1,
+      title: catalogLesson.title,
+      path: `/notes/${catalogLesson.path}`,
+      excerpt: generated?.conclusion ?? chapter.summary,
+      duration: catalogLesson.duration,
+    };
+  }),
+}));
+
+const readerCatalog = {
+  version: "kafka-156-nlp-layout-v1",
+  total: catalog.lessonCount,
+  topics: readerTopics,
+};
+const readerSearch = {
+  version: readerCatalog.version,
+  lessons: lessons.map((lesson) => ({
+    id: lesson.number,
+    text: [
+      lesson.title,
+      lesson.chapterTitle,
+      lesson.conclusion,
+      ...lesson.steps,
+      ...lesson.articleSections.flatMap((item) => [item.title, ...item.paragraphs]),
+      lesson.context,
+      ...lesson.application.flatMap((item) => [item.label, item.value]),
+      ...lesson.terms.flatMap((item) => [item.term, item.meaning]),
+      lesson.pitfall,
+      ...lesson.selfTest,
+    ].join(" "),
+  })),
+};
+
+await writeFile(
+  path.join(webRoot, "public", "catalog.json"),
+  `${JSON.stringify(readerCatalog)}\n`,
+);
+await writeFile(
+  path.join(webRoot, "public", "search.json"),
+  `${JSON.stringify(readerSearch)}\n`,
+);
+
 const missingArticles = lessons.filter((lesson) => !lesson.articleSections.length);
 if (missingArticles.length) {
   throw new Error(`Missing teacher explanations: ${missingArticles.map((lesson) => lesson.id).join(", ")}`);
 }
 
-console.log(`Generated ${lessons.length} Kafka lessons with complete teacher explanations.`);
+console.log(`Generated ${lessons.length} Kafka lessons for the NLP Study reader layout.`);

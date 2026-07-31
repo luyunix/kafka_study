@@ -19,6 +19,9 @@
 /out/
 /public/course-data/
 /public/course-notes/
+/public/notes/
+/public/catalog.json
+/public/search.json
 /app/course-data.json
 
 # misc
